@@ -1,0 +1,29 @@
+/*----BIG TABLETS TO 1200px(Widths smaller than the 1140px row)----*/
+
+@media only screen and (max-width: 1200px) {
+    .hero-text-box {
+        width: 100%;
+        padding: 0 2%;
+    }
+    
+    .row { padding: 0 2%; }
+}
+
+/*----SMALL TABLETS TO BIG TABLETS: FROM 768px TO 1023px----*/
+
+@media only screen and (max-width: 1023px) {
+    body { font-size: 18px; }
+    
+}
+
+/*----SMALL PHONES TO SMALL TABLETS: FROM 481px TO 767px----*/
+
+@media only screen and (max-width: 767px) {
+    body { font-size: 16px; }
+}
+
+/*----SMALL PHONES: FROM 0px TO 480px----*/
+
+@media only screen and (max-width: 480px) {
+    body { font-size: 14px; }
+}
