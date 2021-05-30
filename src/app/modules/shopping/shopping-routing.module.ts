@@ -8,15 +8,25 @@ import { ProductsListingPageComponent } from './products-listing-page/products-l
 const routes: Routes = [
   {
     path: '',
-    component: ProductsHomeComponent,
-  },
-  {
-    path: 'plp',
-    component: ProductsListingPageComponent,
-  },
-  {
-    path: 'cart',
-    component: ProductsCartComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
+      },
+      {
+        path: 'home',
+        component: ProductsHomeComponent,
+      },
+      {
+        path: 'plp',
+        component: ProductsListingPageComponent,
+      },
+      {
+        path: 'cart',
+        component: ProductsCartComponent,
+      },
+    ],
   },
 ];
 
