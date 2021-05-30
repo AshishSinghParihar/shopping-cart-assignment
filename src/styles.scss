@@ -3,6 +3,7 @@
 @import './resources/css/queries.scss';
 @import './resources/vendors/css/grid.scss';
 @import './resources/vendors/css/normalize.scss';
+@import './resources/css/variables.scss';
 
 /* Orange color: #e67e22 */
 
@@ -19,7 +20,7 @@
 html,
 body {
     background-color: #fff;
-    color: #555;
+    color: $base-font-color;
     font-family: 'Lato', 'Arial', sans-serif;
     font-size: 20px;
     font-weight: 300;
@@ -47,6 +48,6 @@ body {
 /* ------------------------------------------------ */
 
 .row {
-    max-width: 1140px;
+    // max-width: 1200px;
     margin: 0 auto;
 }

@@ -1,0 +1,53 @@
+@import "./../../../resources/css/variables.scss";
+
+nav {
+  border-bottom: 1px solid #dfdfdf;
+  -webkit-box-shadow: 0 2px 2px #efefef;
+  box-shadow: 0 2px 2px #efefef;
+
+  .header-row {
+    padding: 10px 2%;
+
+    .logo {
+      height: 60px;
+      width: auto;
+      float: left;
+    }
+
+    .nav {
+      display: inline-block;
+      list-style: none;
+      margin-top: 37px;
+    }
+
+    .nav li a {
+      cursor: pointer;
+      padding: 8px 0;
+      color: #727272;
+      text-decoration: none;
+      font-size: 90%;
+      border-bottom: 2px solid transparent;
+      -webkit-transition: border-bottom 0.2s;
+      transition: border-bottom 0.2s;
+    }
+
+    .nav li a:hover,
+    .nav li a:active {
+      border-bottom: 2px solid $primary-color;
+    }
+
+    .main-nav {
+      margin-left: 20%;
+    }
+
+    .auth-nav {
+      float: right;
+    }
+
+    .main-nav li,
+    .auth-nav li {
+      display: inline-block;
+      margin-left: 40px;
+    }
+  }
+}

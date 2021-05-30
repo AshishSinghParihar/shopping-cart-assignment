@@ -1,1 +1,18 @@
-<p>header works!</p>
+<nav>
+  <div class="row header-row">
+    <img
+      src="assets/static/images/logo.png"
+      alt="Sabka Bazaar logo"
+      class="logo"
+    />
+    <ul class="nav main-nav">
+      <li><a (click)="navigate('products/')">Home</a></li>
+      <li><a (click)="navigate('products/plp')">Products</a></li>
+      <li><a (click)="navigate('products/cart')">Cart</a></li>
+    </ul>
+    <ul class="nav auth-nav">
+      <li><a (click)="navigate('authentication/login')">SignIn</a></li>
+      <li><a (click)="navigate('authentication/signup')">Register</a></li>
+    </ul>
+  </div>
+</nav>
