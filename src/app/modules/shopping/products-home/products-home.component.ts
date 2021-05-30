@@ -10,6 +10,7 @@ export class ProductsHomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log('In ProductsHome');
   }
 
 }

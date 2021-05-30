@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ProductsListingPageComponent } from './products-listing-page/products-listing-page.component';
 import { ProductsHomeComponent } from './products-home/products-home.component';
 import { ProductsCartComponent } from './products-cart/products-cart.component';
+import { ProductsRoutingModule } from './shopping-routing.module';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,6 @@ import { ProductsCartComponent } from './products-cart/products-cart.component';
     ProductsHomeComponent,
     ProductsCartComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, ProductsRoutingModule],
 })
 export class ShoppingModule {}
