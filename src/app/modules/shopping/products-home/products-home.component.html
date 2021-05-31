@@ -1,1 +1,13 @@
-<p>products-home works!</p>
+<section>
+  <owl-carousel-o [options]="carouselCustomOptions">
+    <ng-container *ngFor="let carousel of carouselData">
+      <ng-template carouselSlide>
+        <img
+          [src]="carousel.bannerImageUrl"
+          [alt]="carousel.bannerImageAlt"
+          [title]="carousel.bannerImageAlt"
+        />
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</section>

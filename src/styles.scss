@@ -21,11 +21,12 @@ html,
 body {
     background-color: #fff;
     color: $base-font-color;
-    font-family: 'Lato', 'Arial', sans-serif;
+    font-family: 'Dosis', 'Arial', sans-serif;
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 400;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
 .clearfix {
@@ -50,4 +51,19 @@ body {
 .row {
     // max-width: 1200px;
     margin: 0 auto;
+}
+
+.owl-next,
+.owl-prev {
+    position: absolute;
+    top: 175px;
+}
+
+.owl-next {
+    background-color: green;
+    right: 0px;
+}
+.owl-prev {
+    background-color: red;
+    left: 0px;
 }
