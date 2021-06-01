@@ -1,0 +1,29 @@
+.section-categories {
+  .prod-cat {
+    // border: 1px solid;
+    padding: 10px 3%;
+    .cat-img {
+      //   height: 280px;
+      display: flex;
+      align-items: center;
+      img {
+        height: auto;
+        width: 100%;
+        margin: auto;
+        display: block;
+      }
+    }
+
+    .cat-text {
+      .cat-name {
+        color: #000;
+        font-weight: 600;
+        font-size: 110%;
+      }
+
+      .cat-desc {
+        font-size: 90%;
+      }
+    }
+  }
+}

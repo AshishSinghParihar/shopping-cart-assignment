@@ -1,4 +1,4 @@
-<section>
+<section class="section-carousel gradient-box-shadow border-shadow">
   <owl-carousel-o [options]="carouselCustomOptions">
     <ng-container *ngFor="let carousel of carouselData">
       <ng-template carouselSlide>
@@ -10,4 +10,24 @@
       </ng-template>
     </ng-container>
   </owl-carousel-o>
+</section>
+
+<section class="section-categories">
+  <div class="row prod-cat border-shadow" *ngFor="let category of productCategories; let i = index">
+    <div class="col-4 cat-img" [ngStyle]="{'order': i%2 === 0 ? '1' : '2'}">
+      <img
+        [src]="category.imageUrl"
+        [alt]="category.name"
+        [name]="category.name"
+        [id]="category.id"
+      />
+    </div>
+    <div class="col-8 cat-text d-flex flex-column text-center justify-content-center" [ngStyle]="{'order': i%2 === 0 ? '2' : '1'}">
+      <h3 class="cat-name">{{ category.name }}</h3>
+      <p class="cat-desc">{{ category.description }}</p>
+      <div class="cat-btn">
+        <button class="my-btn">Explore {{ category.key }}</button>
+      </div>
+    </div>
+  </div>
 </section>

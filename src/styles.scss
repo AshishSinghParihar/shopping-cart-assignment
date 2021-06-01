@@ -1,69 +1,121 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import './resources/css/queries.scss';
-@import './resources/vendors/css/grid.scss';
-@import './resources/vendors/css/normalize.scss';
-@import './resources/css/variables.scss';
-
-/* Orange color: #e67e22 */
+// @import "./resources/css/queries.scss";
+// @import "./resources/vendors/css/grid.scss";
+// @import "./resources/vendors/css/normalize.scss";
+// @import "node_modules/ionicons/dist/ionicons/ionicons.esm.js";
+@import "./resources/css/variables.scss";
 
 /* ------------------------------------------------ */
 /* BASIC SETUP */
 /* ------------------------------------------------ */
 * {
-    margin: 0px;
-    padding: 0px;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
 body {
-    background-color: #fff;
-    color: $base-font-color;
-    font-family: 'Dosis', 'Arial', sans-serif;
-    font-size: 20px;
-    font-weight: 400;
-    text-rendering: optimizeLegibility;
-    overflow-x: hidden;
-    min-height: 100vh;
+  background-color: #fff;
+  color: $base-font-color;
+  font-family: "Dosis", "Arial", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
 .clearfix {
-    zoom: 1
+  zoom: 1;
 }
 .clearfix:after {
-    content: '.';
-    clear: both;
-    display: block;
-    height: 0;
-    visibility: hidden;
+  content: ".";
+  clear: both;
+  display: block;
+  height: 0;
+  visibility: hidden;
 }
 
 *:focus {
-    outline: none;
+  outline: none;
 }
 
 /* ------------------------------------------------ */
 /* REUSABLE COMPONENTS */
 /* ------------------------------------------------ */
 
-.row {
-    // max-width: 1200px;
-    margin: 0 auto;
-}
-
 .owl-next,
 .owl-prev {
-    position: absolute;
-    top: 175px;
+  position: absolute;
+  top: 175px;
 }
 
 .owl-next {
-    background-color: green;
-    right: 0px;
+  background-color: green;
+  right: 0px;
 }
 .owl-prev {
-    background-color: red;
-    left: 0px;
+  background-color: red;
+  left: 0px;
+}
+
+.gradient-box-shadow:after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  width: inherit;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.45);
+  transform: rotate(1.5deg) translateX(10px) translateY(15px) skewX(4deg)
+    skewY(-4deg);
+}
+
+.small-icons {
+  padding: 5px;
+}
+
+.border-shadow {
+  box-shadow: 0 2px 2px #efefef;
+}
+
+.my-btn {
+  padding: 0.2em 0.75em;
+  color: #fff;
+  background-color: $primary-color;
+  border: 0;
+}
+
+
+
+/*---------------------------------------------------------------------------*/
+/* MEDIA QUERIES */
+/*---------------------------------------------------------------------------*/
+
+
+/*----BIG TABLETS TO 1200px(Widths smaller than the 1140px row)----*/
+
+@media only screen and (max-width: 1024) {
+  body { padding: 0 80px; }
+  .hero-text-box {
+      width: 100%;
+      padding: 0 2%;
+  }
+  
+  .row { padding: 0 2%; }
+  
+}
+
+/*----SMALL PHONES TO SMALL TABLETS: FROM 481px TO 767px----*/
+
+@media only screen and (max-width: 767px) {
+  body { font-size: 16px; }
+}
+
+/*----SMALL PHONES: FROM 0px TO 480px----*/
+
+@media only screen and (max-width: 480px) {
+  body { font-size: 14px; }
 }

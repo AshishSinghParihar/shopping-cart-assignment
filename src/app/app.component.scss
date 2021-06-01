@@ -1,0 +1,12 @@
+@import "./../resources/css/variables.scss";
+
+.footer {
+    padding: 10px 0;
+    background-color: $grey-bg;
+
+    p {
+        margin: 0;
+        text-align: center;
+        font-size: 90%;
+    }
+}

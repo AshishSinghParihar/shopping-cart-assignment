@@ -1,18 +1,28 @@
 <nav>
   <div class="row header-row">
-    <img
-      src="assets/static/images/logo.png"
-      alt="Sabka Bazaar logo"
-      class="logo"
-    />
-    <ul class="nav main-nav">
-      <li><a (click)="navigate('products/home')">Home</a></li>
-      <li><a (click)="navigate('products/plp')">Products</a></li>
-      <li><a (click)="navigate('products/cart')">Cart</a></li>
-    </ul>
-    <ul class="nav auth-nav">
-      <li><a (click)="navigate('authentication/login')">SignIn</a></li>
-      <li><a (click)="navigate('authentication/signup')">Register</a></li>
-    </ul>
+    <div class="col-md-2 col-lg-2">
+      <img
+        src="assets/static/images/logo.png"
+        alt="Sabka Bazaar logo"
+        class="logo"
+      />
+    </div>
+    <div class="col-md-7 col-lg-8">
+      <ul class="nav main-nav">
+        <li><a (click)="navigate('products/home')">Home</a></li>
+        <li><a (click)="navigate('products/plp')">Products</a></li>
+      </ul>
+    </div>
+    <div class="col-md-3 col-lg-2 d-flex flex-column text-end">
+      <ul class="nav auth-nav">
+        <li><a (click)="navigate('authentication/login')">SignIn</a></li>
+        <li><a (click)="navigate('authentication/signup')">Register</a></li>
+      </ul>
+      <div class="cart-nav text-center h-100">
+        <!-- <ion-icon name="cart small-icons"></ion-icon> -->
+        <i class="fa fa-shopping-cart small-icons cart-icon"></i>
+        <span (click)="navigate('products/cart')" class="cart-text">Cart</span>
+      </div>
+    </div>
   </div>
 </nav>

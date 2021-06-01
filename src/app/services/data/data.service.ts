@@ -9,7 +9,11 @@ const BASE_URL = 'http://localhost:5000';
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  getProductCategories() {
+  getProductBanners() {
     return this.http.get(BASE_URL + '/banners');
+  }
+
+  getProductCategories() {
+    return this.http.get(BASE_URL + '/categories');
   }
 }
