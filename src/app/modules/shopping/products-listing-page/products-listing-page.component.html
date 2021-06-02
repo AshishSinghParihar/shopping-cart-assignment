@@ -1,1 +1,41 @@
-<p>products-listing-page works!</p>
+<div class="row plp-container">
+  <div class="col-sm-12 col-md-3 col-lg-3 category-list">
+    <ul class="prod-list-menu">
+      <li
+        *ngFor="let category of productCategories"
+        [ngClass]="{ active: selectedCategory === category.id }"
+        (click)="selectCategory(category.id)"
+      >
+        {{ category.name }}
+      </li>
+    </ul>
+    <div class="prod-list-select">
+      <select
+        name="prodCategory"
+        role="Product Category Dropdown"
+        id="prod-select"
+      >
+        <option value="all" selected>All items</option>
+        <option
+          [value]="category.id"
+          *ngFor="let category of productCategories"
+        >
+          {{ category.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-9 col-lg-9 product-list">
+    <div class="container">
+      <div class="row">
+        <div
+          class="col-sm-12 col-md-6 col-lg-3"
+          *ngFor="let product of filteredProductList"
+          style="padding-bottom: 60px"
+        >
+          <app-product-card [productDetail]="product"></app-product-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

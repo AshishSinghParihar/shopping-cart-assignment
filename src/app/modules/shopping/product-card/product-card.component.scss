@@ -1,0 +1,156 @@
+@import "./../../../../resources/css/variables.scss";
+
+.product-card {
+  padding-right: 5px;
+  // padding-left: 5px;
+  border-bottom: 1px dashed rgb(190, 190, 190);
+  box-shadow: 5px 0 5px -2px #f3f3f3;
+
+  h3 {
+    font-size: 110%;
+    color: $dark-font-color;
+    font-weight: 600;
+    height: 65px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .prod-img {
+    img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+  }
+
+  .prod-desc {
+    background-color: rgba($grey-bg, 0.7);
+    font-size: 83%;
+    padding: 5px;
+    color: $dark-font-color;
+    line-height: 1.3;
+    font-weight: 500;
+    height: 74px;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .prod-price {
+    margin-top: 5px;
+    padding: 7px 0;
+    .large {
+      margin: 0;
+      div:first-child {
+        padding: 0;
+        text-align: start;
+        line-height: 2;
+      }
+
+      div:last-child {
+        padding: 0;
+        text-align: end;
+      }
+    }
+  }
+}
+
+/*---------------------------------------------------------------------------*/
+/* MEDIA QUERIES */
+/*---------------------------------------------------------------------------*/
+
+/*----BIG TABLETS TO 1200px(Widths smaller than the 1140px row)----*/
+
+@media only screen and (min-width: 993px) {
+  .product-card {
+    .prod-price {
+      .small {
+        display: none;
+      }
+      .large {
+        display: flex;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) and (min-width: 769px) {
+  .product-card {
+    .prod-img,
+    .prod-desc {
+      width: 47%;
+      display: inline;
+    }
+    .prod-desc {
+      height: 130px;
+    }
+    .prod-price {
+      .small {
+        display: block;
+
+        .my-btn {
+          width: 100%;
+          padding: 7px 0;
+        }
+      }
+      .large {
+        display: none;
+      }
+    }
+  }
+}
+
+/*----SMALL PHONES TO SMALL TABLETS: FROM 481px TO 767px----*/
+
+@media only screen and (max-width: 768px) and (min-width: 568px) {
+  .product-card {
+    .prod-img,
+    .prod-desc {
+      width: 47%;
+      display: inline;
+    }
+    .prod-desc {
+      height: 130px;
+    }
+    .prod-price {
+      .small {
+        display: block;
+
+        .my-btn {
+          width: 100%;
+          padding: 7px 0;
+        }
+      }
+      .large {
+        display: none;
+      }
+    }
+  }
+}
+
+/*----SMALL PHONES: FROM 0px TO 480px----*/
+
+@media only screen and (max-width: 567px) and (min-width: 0px) {
+  .product-card {
+    .prod-img,
+    .prod-desc {
+      width: 47%;
+      display: inline;
+    }
+    .prod-desc {
+      height: 130px;
+    }
+    .prod-price {
+      .small {
+        display: block;
+
+        .my-btn {
+          width: 100%;
+          padding: 7px 0;
+        }
+      }
+      .large {
+        display: none;
+      }
+    }
+  }
+}

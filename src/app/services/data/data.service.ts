@@ -16,4 +16,12 @@ export class DataService {
   getProductCategories() {
     return this.http.get(BASE_URL + '/categories');
   }
+
+  getAllProducts() {
+    return this.http.get(BASE_URL + '/products');
+  }
+
+  addToCart(payload: any) {
+    return this.http.post(BASE_URL + '/addToCart', payload);
+  }
 }

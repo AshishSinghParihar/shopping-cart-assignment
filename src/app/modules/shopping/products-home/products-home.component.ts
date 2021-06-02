@@ -4,6 +4,7 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { DataService } from 'src/app/services/data/data.service';
+import { UtilService } from 'src/app/services/util/util.service';
 
 @Component({
   selector: 'app-products-home',
@@ -48,6 +49,7 @@ export class ProductsHomeComponent implements OnInit {
 
   constructor(
     private dataService: DataService,
+    private utilService: UtilService,
     carouselConfig: NgbCarouselConfig
   ) {
     carouselConfig.interval = 2000;
@@ -77,22 +79,7 @@ export class ProductsHomeComponent implements OnInit {
       resp.map(
         (record: any) => (record.imageUrl = '/assets' + record.imageUrl)
       );
-      this.filterAndSortCategories(resp);
+      this.productCategories = this.utilService.filterAndSortCategories(resp);
     });
-  }
-
-  filterAndSortCategories(categories: any) {
-    this.productCategories = categories
-      .filter((record: any) => record.enabled === true)
-      .sort(function (first: any, second: any) {
-        if (first.order > second.order) {
-          return 1;
-        }
-        if (first.order < second.order) {
-          return -1;
-        }
-        return 0;
-      });
-    console.log('prodCat', this.productCategories);
   }
 }

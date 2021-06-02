@@ -1,3 +1,5 @@
+@import './../../../../resources/css/variables.scss';
+
 .section-categories {
   .prod-cat {
     // border: 1px solid;
@@ -16,7 +18,7 @@
 
     .cat-text {
       .cat-name {
-        color: #000;
+        color: $dark-font-color;
         font-weight: 600;
         font-size: 110%;
       }

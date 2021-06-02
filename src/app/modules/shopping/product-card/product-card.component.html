@@ -1,0 +1,34 @@
+<div class="d-flex flex-column product-card">
+  <div>
+    <h3>{{ productDetail.name }}</h3>
+  </div>
+  <div>
+    <div class="prod-img">
+      <img
+        [src]="productDetail.imageURL"
+        [alt]="productDetail.name"
+        [id]="productDetail.id"
+      />
+    </div>
+    <p class="prod-desc" [title]="productDetail.description">
+      {{ productDetail.description }}
+    </p>
+  </div>
+  <div>
+    <div class="prod-price">
+      <div class="large row">
+        <div class="col-6">
+          <span>MRP Rs.{{ productDetail.price }}</span>
+        </div>
+        <div class="col-6 p-0">
+          <button class="my-btn">Buy Now</button>
+        </div>
+      </div>
+      <div class="small">
+        <button class="my-btn">
+          Buy Now @ MRP Rs.{{ productDetail.price }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

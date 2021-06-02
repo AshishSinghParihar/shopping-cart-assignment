@@ -88,34 +88,46 @@ body {
   border: 0;
 }
 
-
-
 /*---------------------------------------------------------------------------*/
 /* MEDIA QUERIES */
 /*---------------------------------------------------------------------------*/
 
+/*----993px to BIGGER DEVICES----*/
 
-/*----BIG TABLETS TO 1200px(Widths smaller than the 1140px row)----*/
-
-@media only screen and (max-width: 1024) {
-  body { padding: 0 80px; }
-  .hero-text-box {
-      width: 100%;
-      padding: 0 2%;
+@media only screen and (min-width: 993px) {
+  body {
+    padding: 0 80px;
+    font-size: 16px;
   }
-  
-  .row { padding: 0 2%; }
-  
+  .hero-text-box {
+    width: 100%;
+    padding: 0 2%;
+  }
 }
 
-/*----SMALL PHONES TO SMALL TABLETS: FROM 481px TO 767px----*/
+/*----SMALL PHONES TO SMALL TABLETS: FROM 769px TO 992px----*/
 
-@media only screen and (max-width: 767px) {
-  body { font-size: 16px; }
+@media only screen and (max-width: 992px) and (min-width: 769px) {
+  body {
+    padding: 0;
+    font-size: 18px;
+  }
 }
 
-/*----SMALL PHONES: FROM 0px TO 480px----*/
+/*----SMALL PHONES TO SMALL TABLETS: FROM 568px TO 768pxpx----*/
 
-@media only screen and (max-width: 480px) {
-  body { font-size: 14px; }
+@media only screen and (max-width: 768px) and (min-width: 568px) {
+  body {
+    padding: 0;
+    font-size: 16px;
+  }
+}
+
+/*----SMALL PHONES: FROM 0px TO 567px----*/
+
+@media only screen and (max-width: 567px) and (min-width: 0px) {
+  body {
+    padding: 0;
+    font-size: 14px;
+  }
 }

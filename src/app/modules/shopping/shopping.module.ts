@@ -8,12 +8,14 @@ import { ProductsListingPageComponent } from './products-listing-page/products-l
 import { ProductsHomeComponent } from './products-home/products-home.component';
 import { ProductsCartComponent } from './products-cart/products-cart.component';
 import { ProductsRoutingModule } from './shopping-routing.module';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @NgModule({
   declarations: [
     ProductsListingPageComponent,
     ProductsHomeComponent,
-    ProductsCartComponent
+    ProductsCartComponent,
+    ProductCardComponent
   ],
   imports: [CommonModule, ProductsRoutingModule, CarouselModule, NgbModule],
 })
