@@ -1,5 +1,9 @@
 @import "./../resources/css/variables.scss";
 
+.main {
+    min-height: $main-content-height;
+}
+
 .footer {
     padding: 10px 0;
     background-color: $grey-bg;

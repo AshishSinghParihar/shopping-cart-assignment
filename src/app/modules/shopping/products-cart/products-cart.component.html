@@ -1,1 +1,71 @@
-<p>products-cart works!</p>
+<div class="cart-container">
+  <div
+    class="cart-content"
+    *ngIf="utilService.productCart.noOfItems > 0; else emptyCart"
+  >
+    <div class="cart-header">
+      <span>My Cart</span> ({{ utilService.productCart.noOfItems }} items)
+    </div>
+    <div class="item-list">
+      <div
+        class="cart-item"
+        *ngFor="
+          let cartItem of utilService.productCart.cartItems;
+          let i = index
+        "
+      >
+        <img
+          class="item-image"
+          [src]="cartItem.product.imageURL"
+          [alt]="cartItem.product.name"
+        />
+        <div class="item-content">
+          <h3>{{ cartItem.product.name }}</h3>
+          <div class="item-nos">
+            <span
+              class="cart-minus"
+              (click)="decreaseCartItem(cartItem.product.id)"
+              >-
+            </span>
+            {{ cartItem.noOfProducts }}
+            <span
+              class="cart-plus"
+              (click)="increaseCartItem(cartItem.product.id)"
+              >+
+            </span>
+            <!-- <i class="fa fa-times"></i> -->
+            x Rs.{{ cartItem.product.price }}
+          </div>
+        </div>
+        <div class="item-price">
+          Rs.{{ cartItem.noOfProducts * cartItem.product.price }}
+        </div>
+      </div>
+      <div class="cart-offer">
+        <img src="assets/static/images/lowest-price.png" alt="Lowest price" />
+        <p>You won't find it cheaper anywhere</p>
+      </div>
+    </div>
+    <div class="cart-action">
+      <p>Promo code can be applied on payment page</p>
+      <button class="my-btn checkout-btn">
+        Proceed to checkout<span
+          >Rs.{{ utilService.productCart.cartPrice }} &nbsp;&nbsp;&nbsp;></span
+        >
+      </button>
+    </div>
+  </div>
+
+
+  <ng-template #emptyCart>
+    <div class="cart-content">
+      <div class="cart-empty">
+        <h6>No items in your cart</h6>
+        <p>Your favourite items are just a click away</p>
+      </div>
+      <div class="cart-action">
+        <button (click)="goToPLP()" class="my-btn">Start Shopping</button>
+      </div>
+    </div></ng-template
+  >
+</div>

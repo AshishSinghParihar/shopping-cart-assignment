@@ -32,12 +32,25 @@ export class Cart {
 
   decreaseCartItem(productId: string) {
     let product = new Product({});
-    this.cartItems.forEach((item: CartItem) => {
+    let cartIndex: number = -1;
+    let cartItemToBeDeleted;
+
+
+    this.cartItems.forEach((item: CartItem, index: number) => {
       product = new Product(item.product);
       if (item.product.id === productId) {
         item.decreaseItem();
+
+        cartIndex = index;
+        if (item.noOfProducts === 0) {
+          cartItemToBeDeleted = item;
+        }
       }
     });
+
+    if (cartItemToBeDeleted) {
+      this.cartItems.splice(cartIndex, 1);
+    }
 
     this.noOfItems--;
     this.cartPrice -= product.price;
