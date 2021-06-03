@@ -45,7 +45,6 @@ export class UtilService {
       (prod: Product) => prod.id === productId
     )[0];
     filteredProduct.stock--;
-    console.log('reduceStock', filteredProduct.stock);
   }
 
   addToProductStock(productId: string) {

@@ -68,7 +68,6 @@ export class ProductsHomeComponent implements OnInit {
 
   getProductCategories() {
     this.httpService.getProductCategories().subscribe((resp: any) => {
-      console.log(resp);
       resp.map(
         (record: any) => (record.imageUrl = '/assets' + record.imageUrl)
       );

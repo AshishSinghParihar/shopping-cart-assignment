@@ -14,11 +14,15 @@ export class Cart {
 
   addItemToCart(product: Product) {
     let index = -1;
-    this.cartItems.forEach((item: CartItem, i: number) => {
+
+    for (let i = 0; i < this.cartItems.length; i++) {
+      const item: CartItem = this.cartItems[i];
       if (item.matchesProduct(product)) {
         index = i;
+        break;
       }
-    });
+    }
+
     if (index === -1) {
       const item = new CartItem(product);
       this.cartItems.push(item);
@@ -35,18 +39,19 @@ export class Cart {
     let cartIndex: number = -1;
     let cartItemToBeDeleted;
 
-
-    this.cartItems.forEach((item: CartItem, index: number) => {
+    for (let i = 0; i < this.cartItems.length; i++) {
+      const item: CartItem = this.cartItems[i];
       product = new Product(item.product);
       if (item.product.id === productId) {
         item.decreaseItem();
 
-        cartIndex = index;
+        cartIndex = i;
         if (item.noOfProducts === 0) {
           cartItemToBeDeleted = item;
         }
+        break;
       }
-    });
+    }
 
     if (cartItemToBeDeleted) {
       this.cartItems.splice(cartIndex, 1);
@@ -58,12 +63,14 @@ export class Cart {
 
   increaseCartItem(productId: string) {
     let product = new Product({});
-    this.cartItems.forEach((item: CartItem) => {
+
+    for (let item of this.cartItems) {
       product = new Product(item.product);
       if (item.product.id === productId) {
         item.increaseItem();
+        break;
       }
-    });
+    }
 
     this.noOfItems++;
     this.cartPrice += product.price;
