@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { DataService } from 'src/app/services/data/data.service';
 import { UtilService } from 'src/app/services/util/util.service';
@@ -50,12 +48,7 @@ export class ProductsHomeComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private utilService: UtilService,
-    carouselConfig: NgbCarouselConfig
   ) {
-    carouselConfig.interval = 2000;
-    carouselConfig.wrap = true;
-    carouselConfig.keyboard = false;
-    carouselConfig.pauseOnHover = false;
   }
 
   ngOnInit(): void {

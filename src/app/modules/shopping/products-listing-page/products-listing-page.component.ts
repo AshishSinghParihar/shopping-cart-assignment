@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { DataService } from 'src/app/services/data/data.service';
 import { UtilService } from 'src/app/services/util/util.service';
+import { Product } from '../model/product';
 
 @Component({
   selector: 'app-products-listing-page',
@@ -10,7 +11,6 @@ import { UtilService } from 'src/app/services/util/util.service';
 })
 export class ProductsListingPageComponent implements OnInit {
   productCategories: any[] = [{}];
-  allProductsList: any[] = [{}];
   filteredProductList: any[] = [{}];
   selectedCategory = '';
 
@@ -40,8 +40,9 @@ export class ProductsListingPageComponent implements OnInit {
       resp.map(
         (record: any) => (record.imageURL = '/assets' + record.imageURL)
       );
-      this.allProductsList = resp;
-      this.filteredProductList = Object.assign(this.allProductsList);
+
+      this.utilService.allProducts = resp;
+      this.filteredProductList = Object.assign(this.utilService.allProducts);
     });
   }
 
@@ -56,21 +57,34 @@ export class ProductsListingPageComponent implements OnInit {
 
   filterProducts(category: string) {
     if (category === '') {
-      this.filteredProductList = Object.assign(this.allProductsList);
+      this.filteredProductList = Object.assign(this.utilService.allProducts);
     } else {
-      this.filteredProductList = this.allProductsList.filter(
+      this.filteredProductList = this.utilService.allProducts.filter(
         (product: any) => product.category === category
       );
       console.log('filtered', this.filteredProductList);
     }
   }
 
-  addToCart(productDetails: any) {
-    const product = {
-      productId: productDetails.id
+  addToCart(productDetails: Product) {
+    if (this.utilService.isInStock(productDetails.id)) {
+      let payload = {
+        productId: productDetails.id,
+      };
+      // this.dataService.addToCart(payload).subscribe((resp: any) => {
+      //   console.log('addedToCart');
+      // });
+
+      const product = new Product(productDetails);
+      this.utilService.addItemToCart(product);
+      console.log('After adding to cart', this.utilService.productCart);
+      this.utilService.openSnackBar('Product added to cart', 'Okay');
+    } else {
+      console.log('Not available');
+      this.utilService.openSnackBar('Product out of stock', 'Okay', {
+        verticalPosition: 'top',
+        panelClass: ['error-snackbar'],
+      });
     }
-    this.dataService.addToCart(product).subscribe((resp: any) => {
-      
-    });
   }
 }

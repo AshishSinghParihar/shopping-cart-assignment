@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { Product } from 'src/app/modules/shopping/model/product';
 
 const BASE_URL = 'http://localhost:5000';
 
@@ -18,7 +20,11 @@ export class DataService {
   }
 
   getAllProducts() {
-    return this.http.get(BASE_URL + '/products');
+    return this.http
+      .get(BASE_URL + '/products')
+      .pipe(
+        map((data: any) => data.map((product: any) => new Product(product)))
+      );
   }
 
   addToCart(payload: any) {

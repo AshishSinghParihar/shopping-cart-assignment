@@ -21,11 +21,11 @@
           <span>MRP Rs.{{ productDetail.price }}</span>
         </div>
         <div class="col-6 p-0">
-          <button class="my-btn">Buy Now</button>
+          <button class="my-btn" (click)="onBuyButtonClick()">Buy Now</button>
         </div>
       </div>
       <div class="small">
-        <button class="my-btn">
+        <button class="my-btn" (click)="onBuyButtonClick()">
           Buy Now @ MRP Rs.{{ productDetail.price }}
         </button>
       </div>

@@ -33,7 +33,7 @@
           *ngFor="let product of filteredProductList"
           style="padding-bottom: 60px"
         >
-          <app-product-card [productDetail]="product"></app-product-card>
+          <app-product-card [productDetail]="product" (addToCartEmitter)="addToCart($event)"></app-product-card>
         </div>
       </div>
     </div>
