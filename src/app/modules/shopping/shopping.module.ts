@@ -5,7 +5,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { ProductsListingPageComponent } from './products-listing-page/products-listing-page.component';
 import { ProductsHomeComponent } from './products-home/products-home.component';
-import { ProductsCartComponent } from './products-cart/products-cart.component';
 import { ProductsRoutingModule } from './shopping-routing.module';
 import { ProductCardComponent } from './product-card/product-card.component';
 
@@ -13,8 +12,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
   declarations: [
     ProductsListingPageComponent,
     ProductsHomeComponent,
-    ProductsCartComponent,
-    ProductCardComponent
+    ProductCardComponent,
   ],
   imports: [CommonModule, ProductsRoutingModule, CarouselModule],
 })

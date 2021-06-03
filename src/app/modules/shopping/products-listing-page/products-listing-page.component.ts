@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DataService } from 'src/app/core/http/data/data.service';
+import { HttpService } from 'src/app/core/services/http/http.service';
 import { UtilService } from 'src/app/core/services/util/util.service';
 import { Product } from '../model/product';
 
@@ -15,7 +15,7 @@ export class ProductsListingPageComponent implements OnInit {
   selectedCategory = '';
 
   constructor(
-    private dataService: DataService,
+    private httpService: HttpService,
     private utilService: UtilService
   ) {}
 
@@ -25,7 +25,7 @@ export class ProductsListingPageComponent implements OnInit {
   }
 
   getProductCategories() {
-    this.dataService.getProductCategories().subscribe((resp: any) => {
+    this.httpService.getProductCategories().subscribe((resp: any) => {
       console.log(resp);
       resp.map(
         (record: any) => (record.imageUrl = '/assets' + record.imageUrl)
@@ -35,7 +35,7 @@ export class ProductsListingPageComponent implements OnInit {
   }
 
   getAllProducts() {
-    this.dataService.getAllProducts().subscribe((resp: any) => {
+    this.httpService.getAllProducts().subscribe((resp: any) => {
       console.log(resp);
       resp.map(
         (record: any) => (record.imageURL = '/assets' + record.imageURL)
@@ -71,7 +71,7 @@ export class ProductsListingPageComponent implements OnInit {
       let payload = {
         productId: productDetails.id,
       };
-      // this.dataService.addToCart(payload).subscribe((resp: any) => {
+      // this.httpService.addToCart(payload).subscribe((resp: any) => {
       //   console.log('addedToCart');
       // });
 

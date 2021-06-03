@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { DataService } from 'src/app/core/http/data/data.service';
+import { HttpService } from 'src/app/core/services/http/http.service';
 import { UtilService } from 'src/app/core/services/util/util.service';
 
 @Component({
@@ -46,7 +46,7 @@ export class ProductsHomeComponent implements OnInit {
   productCategories: any[] = [{}];
 
   constructor(
-    private dataService: DataService,
+    private httpService: HttpService,
     private utilService: UtilService,
   ) {
   }
@@ -57,7 +57,7 @@ export class ProductsHomeComponent implements OnInit {
   }
 
   getProductBanners() {
-    this.dataService.getProductBanners().subscribe((data: any) => {
+    this.httpService.getProductBanners().subscribe((data: any) => {
       data.map(
         (record: any) =>
           (record.bannerImageUrl = '/assets' + record.bannerImageUrl)
@@ -67,7 +67,7 @@ export class ProductsHomeComponent implements OnInit {
   }
 
   getProductCategories() {
-    this.dataService.getProductCategories().subscribe((resp: any) => {
+    this.httpService.getProductCategories().subscribe((resp: any) => {
       console.log(resp);
       resp.map(
         (record: any) => (record.imageUrl = '/assets' + record.imageUrl)
