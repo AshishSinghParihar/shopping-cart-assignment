@@ -60,8 +60,8 @@
                   >close
                 </mat-icon>
               </div>
-              <div class="price">Rs.{{ cartItem.product.price }}</div>
             </div>
+            <div class="price">Rs.{{ cartItem.product.price }}</div>
             <div class="item-price">
               Rs.{{ cartItem.noOfProducts * cartItem.product.price }}
             </div>
@@ -75,13 +75,11 @@
     </div>
 
     <ng-template #emptyCart>
-      <!-- <div class="cart-content"> -->
       <div class="cart-empty">
         <h6>No items in your cart</h6>
         <p>Your favourite items are just a click away</p>
       </div>
       <div class="cart-footer"></div>
-      <!-- </div> -->
     </ng-template>
   </div>
 
@@ -89,9 +87,11 @@
     <div *ngIf="utilService.productCart.noOfItems; else emptyCartFooter">
       <p>Promo code can be applied on payment page</p>
       <button class="my-btn checkout-btn">
-        Proceed to checkout<span
-          >Rs.{{ utilService.productCart.cartPrice }} &nbsp;&nbsp;&nbsp;></span
-        >
+        Proceed to checkout
+        <span
+          >Rs.{{ utilService.productCart.cartPrice }} &nbsp;&nbsp;&nbsp;
+          <mat-icon aria-hidden="false">chevron_right </mat-icon>
+        </span>
       </button>
     </div>
     <ng-template #emptyCartFooter>

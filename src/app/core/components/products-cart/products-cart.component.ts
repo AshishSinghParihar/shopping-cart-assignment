@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class ProductsCartComponent implements OnInit {
   constructor(
     private router: Router,
     public utilService: UtilService,
-    private dialogRef: MatDialogRef<ProductsCartComponent>
+    @Optional() private dialogRef: MatDialogRef<ProductsCartComponent>
   ) {}
 
   ngOnInit(): void {}
