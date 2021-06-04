@@ -1,12 +1,26 @@
 <div class="cart-container">
-  <div
-    class="cart-content"
-    *ngIf="utilService.productCart.noOfItems > 0; else emptyCart"
-  >
-    <div class="cart-header">
-      <span>My Cart</span> ({{ utilService.productCart.noOfItems }} items)
+  <div class="cart-header">
+    <div>
+      <span class="cart-title">My Cart</span>&nbsp;&nbsp;
+      <span *ngIf="utilService.productCart.noOfItems"
+        >({{ utilService.productCart.noOfItems }} items)</span
+      >
     </div>
-    <div class="item-list">
+    <div class="close-icon-div">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Close dialog button"
+        (click)="closeDialog()"
+        >close
+      </mat-icon>
+    </div>
+  </div>
+
+  <div class="cart-content">
+    <div
+      class="item-list"
+      *ngIf="utilService.productCart.noOfItems > 0; else emptyCart"
+    >
       <div
         class="cart-item"
         *ngFor="
@@ -22,23 +36,36 @@
         <div class="item-content">
           <h3>{{ cartItem.product.name }}</h3>
           <div class="item-nos">
-            <span
-              class="cart-minus"
-              (click)="decreaseCartItem(cartItem.product.id)"
-              >-
-            </span>
-            {{ cartItem.noOfProducts }}
-            <span
-              class="cart-plus"
-              (click)="increaseCartItem(cartItem.product.id)"
-              >+
-            </span>
-            <!-- <i class="fa fa-times"></i> -->
-            x Rs.{{ cartItem.product.price }}
+            <div class="item-calc">
+              <div class="cart-item-icons">
+                <mat-icon
+                  class="cart-minus"
+                  aria-hidden="false"
+                  aria-label="Increase item"
+                  (click)="decreaseCartItem(cartItem.product.id)"
+                  >remove
+                </mat-icon>
+                {{ cartItem.noOfProducts }}
+                <mat-icon
+                  class="cart-plus"
+                  aria-hidden="false"
+                  aria-label="Increase item"
+                  (click)="increaseCartItem(cartItem.product.id)"
+                  >add
+                </mat-icon>
+                <mat-icon
+                  aria-hidden="false"
+                  aria-label="Increase item"
+                  (click)="increaseCartItem(cartItem.product.id)"
+                  >close
+                </mat-icon>
+              </div>
+              <div class="price">Rs.{{ cartItem.product.price }}</div>
+            </div>
+            <div class="item-price">
+              Rs.{{ cartItem.noOfProducts * cartItem.product.price }}
+            </div>
           </div>
-        </div>
-        <div class="item-price">
-          Rs.{{ cartItem.noOfProducts * cartItem.product.price }}
         </div>
       </div>
       <div class="cart-offer">
@@ -46,7 +73,20 @@
         <p>You won't find it cheaper anywhere</p>
       </div>
     </div>
-    <div class="cart-action">
+
+    <ng-template #emptyCart>
+      <!-- <div class="cart-content"> -->
+      <div class="cart-empty">
+        <h6>No items in your cart</h6>
+        <p>Your favourite items are just a click away</p>
+      </div>
+      <div class="cart-footer"></div>
+      <!-- </div> -->
+    </ng-template>
+  </div>
+
+  <div class="cart-footer">
+    <div *ngIf="utilService.productCart.noOfItems; else emptyCartFooter">
       <p>Promo code can be applied on payment page</p>
       <button class="my-btn checkout-btn">
         Proceed to checkout<span
@@ -54,18 +94,8 @@
         >
       </button>
     </div>
+    <ng-template #emptyCartFooter>
+      <button (click)="goToPLP()" class="my-btn">Start Shopping</button>
+    </ng-template>
   </div>
-
-
-  <ng-template #emptyCart>
-    <div class="cart-content">
-      <div class="cart-empty">
-        <h6>No items in your cart</h6>
-        <p>Your favourite items are just a click away</p>
-      </div>
-      <div class="cart-action">
-        <button (click)="goToPLP()" class="my-btn">Start Shopping</button>
-      </div>
-    </div></ng-template
-  >
 </div>

@@ -2,23 +2,39 @@
 
 .cart-container {
   background-color: $grey-bg;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
-  .cart-content {
-    min-height: $main-content-height;
+  .cart-header {
+    padding: 1em;
+    font-weight: 600;
+    font-size: 70%;
+    background-color: #fff;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #000;
+    color: #fff;
 
-    .cart-header {
-      padding: 15px;
-      margin-top: 25px;
-      font-weight: 600;
-      font-size: 85%;
-      background-color: #fff;
+    .cart-title {
+      font-size: 150%;
+    }
 
-      span {
-        font-size: 150%;
+    .close-icon-div {
+      display: flex;
+
+      mat-icon {
+        cursor: pointer;
       }
     }
+  }
+
+  .cart-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
 
     .item-list {
       flex: 1;
@@ -39,7 +55,7 @@
         }
 
         .item-content {
-          margin-right: auto;
+          flex: 1;
           padding-left: 3%;
 
           h3 {
@@ -49,23 +65,48 @@
 
           .item-nos {
             word-spacing: 1em;
+            display: flex;
+            justify-content: space-between;
+
+            .item-calc {
+              display: flex;
+              justify-content: space-between;
+              flex: 1;
+              padding-right: 30%;
+
+              .cart-item-icons {
+                display: flex;
+                flex: 1;
+                justify-content: space-between;
+
+                mat-icon {
+                  &.cart-minus,
+                  &.cart-plus {
+                    color: #fff;
+                    background-color: $primary-color;
+                    border-radius: 50%;
+                  }
+                }
+              }
+
+              .price {
+                padding-left: 2em;
+              }
+            }
+
+            .item-price {
+              align-self: center;
+              width: 3em;
+            }
+
             span {
               cursor: pointer;
               background-color: $primary-color;
               color: #fff;
               padding: 0 0px 4px 13px;
               border-radius: 2px;
-
-              &.cart-minus,
-              &.cart-plus {
-                margin-right: 1em;
-              }
             }
           }
-        }
-
-        .item-price {
-          align-self: center;
         }
       }
 
@@ -85,39 +126,44 @@
       }
     }
 
-    .cart-action {
-      text-align: center;
-      padding: 0.5em;
-      background-color: #fff;
-
-      p {
-        font-size: 85%;
-        margin: 0 0 10px 0;
-      }
-
-      button {
-        border-radius: 4px;
-        width: 100%;
-      }
-
-      .checkout-btn {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-    }
-
     .cart-empty {
-      height: $main-content-height;
+      height: 100% !important;
       background-color: #fff;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
 
-      p {
-        font-size: 90%;
+      h6 {
+        font-size: 100%;
+        font-weight: 600;
       }
+
+      p {
+        font-size: 80%;
+      }
+    }
+  }
+
+  .cart-footer {
+    text-align: center;
+    padding: 0.5em;
+    background-color: #fff;
+
+    p {
+      font-size: 85%;
+      margin: 0 0 10px 0;
+    }
+
+    button {
+      border-radius: 4px;
+      width: 100%;
+    }
+
+    .checkout-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 }
@@ -125,21 +171,6 @@
 /*---------------------------------------------------------------------------*/
 /* MEDIA QUERIES */
 /*---------------------------------------------------------------------------*/
-
-/*----993px to BIGGER DEVICES----*/
-
-@media only screen and (min-width: 993px) {
-  body {
-    padding: 0 40px;
-    font-size: 16px;
-  }
-  .hero-text-box {
-    width: 100%;
-    padding: 0 2%;
-  }
-}
-
-/*----SMALL PHONES TO SMALL TABLETS: FROM 769px TO 992px----*/
 
 /*----BIGGER DEVICES: FROM 993px TO above----*/
 
@@ -151,8 +182,10 @@
   }
 
   .cart-item {
+    font-size: 85%;
+
     img {
-      width: 90px;
+      width: 50px;
     }
   }
 
@@ -162,6 +195,7 @@
     }
   }
 }
+
 @media only screen and (max-width: 992px) and (min-width: 769px) {
   .item-nos {
     span {

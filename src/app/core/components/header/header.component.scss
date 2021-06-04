@@ -64,18 +64,20 @@ nav {
 
     .cart-nav {
       margin-left: 25%;
-      padding: 5px;
       background-color: $grey-bg;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
 
       .cart-icon {
-        padding: 6%;
         color: $primary-color;
-        font-size: 150%;
+        width: 1.5em;
+        fill: red;
       }
 
       .cart-text {
-        margin-left: 2%;
-        cursor: pointer;
+        margin-left: 4%;
       }
     }
   }

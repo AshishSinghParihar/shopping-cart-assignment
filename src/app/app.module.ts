@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,9 +20,12 @@ import { ProductsCartComponent } from './core/components/products-cart/products-
     HttpClientModule,
     AppRoutingModule,
     MatSnackBarModule,
+    MatDialogModule,
+    MatIconModule,
   ],
-  providers: [],
+  // providers: [MatDialogRef],
   bootstrap: [AppComponent],
   exports: [MatSnackBarModule],
+  entryComponents: [ProductsCartComponent]
 })
 export class AppModule {}

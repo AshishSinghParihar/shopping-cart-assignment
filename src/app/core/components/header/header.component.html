@@ -18,12 +18,24 @@
         <li><a (click)="navigate('authentication/login')">SignIn</a></li>
         <li><a (click)="navigate('authentication/signup')">Register</a></li>
       </ul>
-      <div class="cart-nav text-center h-100">
-        <!-- <ion-icon name="cart small-icons"></ion-icon> -->
-        <i class="fa fa-shopping-cart small-icons cart-icon"></i>
-        <span (click)="navigate('cart')" class="cart-text"
+      <div class="cart-nav text-center h-100" (click)="openCart()">
+        <!-- <span> -->
+        <!-- <img
+          src="assets/static/images/cart.svg"
+          alt="Cart icon"
+          class="cart-icon"
+        /> -->
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Cart icon"
+          class="cart-icon"
+          >shopping_cart
+        </mat-icon>
+        
+        <span class="cart-text"
           >{{ utilService.productCart.noOfItems }} items</span
         >
+        <!-- </span> -->
       </div>
     </div>
   </div>

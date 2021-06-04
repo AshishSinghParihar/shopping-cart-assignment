@@ -75,4 +75,13 @@ export class Cart {
     this.noOfItems++;
     this.cartPrice += product.price;
   }
+
+  getCartDetails() {
+    return (
+      'The cart contains ' +
+      this.noOfItems +
+      'items with a total price of rupees ' +
+      this.cartPrice
+    );
+  }
 }
