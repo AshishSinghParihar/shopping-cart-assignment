@@ -24,11 +24,13 @@ export class ProductsCartComponent implements OnInit {
   }
 
   decreaseCartItem(productId: string) {
-    this.utilService.productCart.decreaseCartItem(productId);
+    this.utilService.removeItemFromCart(
+      this.utilService.getProductById(productId)
+    );
   }
 
   increaseCartItem(productId: string) {
-    this.utilService.productCart.increaseCartItem(productId);
+    this.utilService.addItemToCart(this.utilService.getProductById(productId));
   }
 
   closeDialog() {

@@ -28,29 +28,44 @@ export class UtilService {
       });
   }
 
-  isInStock(productId: string) {
-    const filteredProduct = this.allProducts.filter(
+  getProductById(productId: string) {
+    return this.allProducts.filter(
       (prod: Product) => prod.id === productId
     )[0];
-    return filteredProduct.stock > 0;
+  }
+
+  isInStock(productId: string) {
+    const filteredProduct = this.getProductById(productId);
+    if (filteredProduct.stock > 0) {
+      return true;
+    } else {
+      this.openSnackBar('Product out of stock', 'Okay', {
+        verticalPosition: 'top',
+        panelClass: ['error-snackbar'],
+      });
+      return false;
+    }
   }
 
   addItemToCart(product: Product) {
-    this.productCart.addItemToCart(product);
-    this.reduceFromProductStock(product.id);
+    if (this.isInStock(product.id)) {
+      this.productCart.addItemToCart(product);
+      this.reduceFromProductStock(product.id);
+    }
   }
 
-  reduceFromProductStock(productId: string) {
-    const filteredProduct = this.allProducts.filter(
-      (prod: Product) => prod.id === productId
-    )[0];
+  private reduceFromProductStock(productId: string) {
+    const filteredProduct = this.getProductById(productId);
     filteredProduct.stock--;
   }
 
-  addToProductStock(productId: string) {
-    const filteredProduct = this.allProducts.filter(
-      (prod: Product) => prod.id === productId
-    )[0];
+  removeItemFromCart(product: Product) {
+    this.productCart.decreaseCartItem(product.id);
+    this.addToProductStock(product.id);
+  }
+
+  private addToProductStock(productId: string) {
+    const filteredProduct = this.getProductById(productId);
     filteredProduct.stock++;
   }
 

@@ -1,1 +1,33 @@
-<p>login works!</p>
+<div class="login-container row">
+  <div class="col-sm-12 col-md-6 col-lg-6 login-text">
+    <h3 class="login-heading">Login</h3>
+    <p class="login-para">
+      Get access to your Orders, Wishlist and Recommendations
+    </p>
+  </div>
+  <div class="col-sm-12 col-md-6 col-lg-6 login-form">
+    <form [formGroup]="loginForm">
+      <div class="email-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="email@example.com"
+            formControlName="email"
+          />
+          <mat-error *ngIf="loginForm.get('email')?.invalid">{{getErrorMessage('email')}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="password-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" />
+          <mat-error *ngIf="loginForm.get('password')?.invalid">{{getErrorMessage('password')}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="login-btn-container">
+        <button class="my-btn login-btn" (click)="onLogin()">Login</button>
+      </div>
+    </form>
+  </div>
+</div>

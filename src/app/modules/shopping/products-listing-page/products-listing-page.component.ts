@@ -26,7 +26,6 @@ export class ProductsListingPageComponent implements OnInit {
 
   getProductCategories() {
     this.httpService.getProductCategories().subscribe((resp: any) => {
-      // console.log(resp);
       resp.map(
         (record: any) => (record.imageUrl = '/assets' + record.imageUrl)
       );
@@ -36,7 +35,6 @@ export class ProductsListingPageComponent implements OnInit {
 
   getAllProducts() {
     this.httpService.getAllProducts().subscribe((resp: any) => {
-      // console.log(resp);
       resp.map(
         (record: any) => (record.imageURL = '/assets' + record.imageURL)
       );
@@ -78,11 +76,6 @@ export class ProductsListingPageComponent implements OnInit {
       const product = new Product(productDetails);
       this.utilService.addItemToCart(product);
       this.utilService.openSnackBar('Product added to cart', 'Okay');
-    } else {
-      this.utilService.openSnackBar('Product out of stock', 'Okay', {
-        verticalPosition: 'top',
-        panelClass: ['error-snackbar'],
-      });
     }
   }
 }

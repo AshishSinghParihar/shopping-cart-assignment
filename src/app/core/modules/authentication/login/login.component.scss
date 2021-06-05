@@ -1,0 +1,24 @@
+.login-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 200px;
+  height: 50vh;
+
+  .login-text {
+    h3 {
+      font-weight: 600;
+    }
+  }
+
+  .login-form {
+    font-size: 90%;
+
+    .login-btn-container {
+      padding-top: 1em;
+      .login-btn {
+        width: 100%;
+      }
+    }
+  }
+}

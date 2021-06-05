@@ -61,21 +61,6 @@ export class Cart {
     this.cartPrice -= product.price;
   }
 
-  increaseCartItem(productId: string) {
-    let product = new Product({});
-
-    for (let item of this.cartItems) {
-      product = new Product(item.product);
-      if (item.product.id === productId) {
-        item.increaseItem();
-        break;
-      }
-    }
-
-    this.noOfItems++;
-    this.cartPrice += product.price;
-  }
-
   getCartDetails() {
     return (
       'The cart contains ' +
