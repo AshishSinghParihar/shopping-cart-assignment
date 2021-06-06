@@ -4,7 +4,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import {
+  MatDialogModule,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,9 +27,12 @@ import { ProductsCartComponent } from './core/components/products-cart/products-
     MatDialogModule,
     MatIconModule,
   ],
-  // providers: [MatDialogRef],
+  providers: [
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} },
+  ],
   bootstrap: [AppComponent],
   exports: [MatSnackBarModule],
-  entryComponents: [ProductsCartComponent]
+  entryComponents: [ProductsCartComponent],
 })
 export class AppModule {}

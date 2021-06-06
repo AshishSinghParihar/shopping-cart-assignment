@@ -2,17 +2,20 @@
   <div>
     <h3>{{ productDetail.name }}</h3>
   </div>
-  <div>
-    <div class="prod-img">
+  <div class="prod-content">
+    <div class="prod-img-cont">
       <img
+      class="prod-img"
         [src]="productDetail.imageURL"
         [alt]="productDetail.name"
         [id]="productDetail.id"
       />
     </div>
-    <p class="prod-desc" [title]="productDetail.description">
-      {{ productDetail.description }}
-    </p>
+    <div class="prod-desc-cont">
+      <p class="prod-desc" [title]="productDetail.description">
+        {{ productDetail.description }}
+      </p>
+    </div>
   </div>
   <div>
     <div class="prod-price">

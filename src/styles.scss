@@ -147,6 +147,7 @@ body {
   }
 }
 
+
 /*---------------------------------------------------------------------------*/
 /* MEDIA QUERIES */
 /*---------------------------------------------------------------------------*/
@@ -188,5 +189,33 @@ body {
   body {
     padding: 0;
     font-size: 14px;
+  }
+}
+
+
+// LOGIN and SIGNUP
+
+@media only screen and (min-width: 1081px) {
+  .signup-container,
+  .login-container {
+    margin: 10px 150px;
+  }
+}
+
+@media only screen and (max-width: 1080px) and (min-width: 769px) {
+  .signup-container,
+  .login-container {
+    margin: 10px 70px;
+    padding-bottom: 20px;
+  }
+}
+
+/*----SMALL PHONES TO SMALL TABLETS: FROM 769px TO 992px----*/
+
+@media only screen and (max-width: 768px) and (min-width: 0px) {
+  .signup-container,
+  .login-container {
+    margin: 10px 50px;
+    padding-bottom: 40px;
   }
 }

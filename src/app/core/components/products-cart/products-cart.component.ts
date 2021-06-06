@@ -1,6 +1,8 @@
-import { Component, OnInit, Optional } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { UtilService } from 'src/app/core/services/util/util.service';
 
@@ -13,7 +15,8 @@ export class ProductsCartComponent implements OnInit {
   constructor(
     private router: Router,
     public utilService: UtilService,
-    @Optional() private dialogRef: MatDialogRef<ProductsCartComponent>
+    @Optional() private dialogRef: MatDialogRef<ProductsCartComponent>,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: { isBigScreen: boolean }
   ) {}
 
   ngOnInit(): void {}

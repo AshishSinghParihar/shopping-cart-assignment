@@ -43,6 +43,9 @@ export class HeaderComponent implements OnInit {
     dialogConfig.ariaDescribedBy = this.utilService.productCart.getCartDetails();
     dialogConfig.disableClose = true;
     dialogConfig.width = '40%';
+    dialogConfig.data = {
+      isBigScreen: true
+    }
     
     this.dialog.open(ProductsCartComponent, dialogConfig);
   }

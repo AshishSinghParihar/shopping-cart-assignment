@@ -6,7 +6,7 @@
         >({{ utilService.productCart.noOfItems }} items)</span
       >
     </div>
-    <div class="close-icon-div">
+    <div class="close-icon-div" *ngIf="data?.isBigScreen">
       <mat-icon
         aria-hidden="false"
         aria-label="Close dialog button"
