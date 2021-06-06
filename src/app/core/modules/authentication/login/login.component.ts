@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   }
 
   getErrorMessage(formControlName: string) {
-    console.log('formControl', formControlName);
     const formControl = this.loginForm.get(formControlName);
 
     if (formControlName === 'email' && formControl?.invalid) {

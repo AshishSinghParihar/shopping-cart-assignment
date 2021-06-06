@@ -1,15 +1,118 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
+  signupForm: FormGroup;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
+    this.initializeForm();
   }
 
+  initializeForm() {
+    this.signupForm = this.formBuilder.group(
+      {
+        fName: [null, [Validators.required]],
+        lName: [null, [Validators.required]],
+        email: [null, [Validators.required, Validators.email]],
+        password: [
+          null,
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.pattern(
+              '^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'
+            ),
+          ],
+        ],
+        cnfPassword: [null, [Validators.required]],
+      },
+      {
+        validator: this.cnfPasswordValidator('password', 'cnfPassword'),
+      }
+    );
+  }
+
+  getErrorMessage(formControlName: string) {
+    const formControl = this.signupForm.get(formControlName);
+
+    if (formControlName === 'fName' && formControl?.invalid) {
+      if (formControl.hasError('required')) {
+        return 'First name is required';
+      } else {
+        return '';
+      }
+    } else if (formControlName === 'lName' && formControl?.invalid) {
+      if (formControl.hasError('required')) {
+        return 'Last name is required';
+      } else {
+        return '';
+      }
+    } else if (formControlName === 'email' && formControl?.invalid) {
+      if (formControl.hasError('required')) {
+        return 'Email is required';
+      } else if (formControl.hasError('email')) {
+        return 'Not a valid Email';
+      } else {
+        return '';
+      }
+    } else if (formControlName === 'password' && formControl?.invalid) {
+      if (formControl.hasError('required')) {
+        return 'Password is required';
+      } else if (formControl.hasError('minlength')) {
+        return 'Length of password should be atleast 6 characters';
+      } else if (formControl.hasError('pattern')) {
+        return 'Password: a.	Must have a number and alphabet. b. Cannot have spaces';
+      } else {
+        return '';
+      }
+    } else if (formControlName === 'cnfPassword' && formControl?.invalid) {
+      if (formControl.hasError('required')) {
+        return 'Confirm password is required';
+      } else if (formControl.hasError('passwordMismatch')) {
+        return 'Passwords do not match';
+      } else {
+        return '';
+      }
+    } else {
+      return '';
+    }
+  }
+
+  onSignup() {
+    if (this.signupForm.valid) {
+      this.router.navigate(['products/plp']);
+    }}
+
+  cnfPasswordValidator(password: string, confirmPassword: string) {
+    return (formGroup: FormGroup) => {
+      const passwordControl = formGroup.controls[password];
+      const confirmPasswordControl = formGroup.controls[confirmPassword];
+
+      if (!passwordControl || !confirmPasswordControl) {
+        return null;
+      }
+
+      if (
+        confirmPasswordControl.errors &&
+        !confirmPasswordControl.errors.passwordMismatch
+      ) {
+        return null;
+      }
+
+      if (passwordControl.value !== confirmPasswordControl.value) {
+        confirmPasswordControl.setErrors({ passwordMismatch: true });
+      } else {
+        confirmPasswordControl.setErrors(null);
+      }
+      return null;
+    };
+  }
 }

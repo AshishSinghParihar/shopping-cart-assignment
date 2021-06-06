@@ -17,7 +17,6 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?: any) {
     this.screenWidth = window.innerWidth;
-    console.log('Screen width', this.screenWidth);
   }
 
   constructor(private router: Router, private dialog: MatDialog, public utilService: UtilService) {}

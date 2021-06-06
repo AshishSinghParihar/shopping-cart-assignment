@@ -1,1 +1,64 @@
-<p>signup works!</p>
+<div class="signup-container row">
+  <div class="col-sm-12 col-md-6 col-lg-6 signup-text">
+    <h3 class="signup-heading">Signup</h3>
+    <p class="signup-para">
+      We do not share your personal details with anyone
+    </p>
+  </div>
+  <div class="col-sm-12 col-md-6 col-lg-6 signup-form">
+    <form [formGroup]="signupForm">
+      <div class="fname-container">
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="fName" />
+          <mat-error *ngIf="signupForm.get('fName')?.invalid">{{
+            getErrorMessage("fName")
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="lname-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lName" />
+          <mat-error *ngIf="signupForm.get('lName')?.invalid">{{
+            getErrorMessage("lName")
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="email-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="email@example.com"
+            formControlName="email"
+          />
+          <mat-error *ngIf="signupForm.get('email')?.invalid">{{
+            getErrorMessage("email")
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="password-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" />
+          <mat-error *ngIf="signupForm.get('password')?.invalid">{{
+            getErrorMessage("password")
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="cnf-password-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput type="password" formControlName="cnfPassword" />
+          <mat-error *ngIf="signupForm.get('cnfPassword')?.invalid">{{
+            getErrorMessage("cnfPassword")
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="signup-btn-container">
+        <button class="my-btn signup-btn" (click)="onSignup()">Signup</button>
+      </div>
+    </form>
+  </div>
+</div>
