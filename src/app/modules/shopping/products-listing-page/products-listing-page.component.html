@@ -11,8 +11,12 @@
     </ul>
     <div class="prod-list-select">
       <select
+      (change)="onDropdownChange($event.target)"
+      #dropdown
+      class="form-select"
         name="prodCategory"
         role="Product Category Dropdown"
+        aria-label="Product Category Dropdown"
         id="prod-select"
       >
         <option value="all" selected>All items</option>
@@ -26,7 +30,7 @@
     </div>
   </div>
   <div class="col-sm-12 col-md-9 col-lg-9 product-list">
-    <div class="containe">
+    <div>
       <div class="row">
         <div
           class="col-xs-12 col-sm-6 col-md-6 col-lg-3"

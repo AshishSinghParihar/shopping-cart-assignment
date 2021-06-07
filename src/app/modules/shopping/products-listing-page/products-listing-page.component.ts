@@ -45,7 +45,7 @@ export class ProductsListingPageComponent implements OnInit {
   }
 
   selectCategory(category: string) {
-    if (this.selectedCategory === category) {
+    if (this.selectedCategory === category || category === 'all') {
       this.selectedCategory = '';
     } else {
       this.selectedCategory = category;
@@ -62,6 +62,11 @@ export class ProductsListingPageComponent implements OnInit {
       );
       console.log('filtered', this.filteredProductList);
     }
+  }
+
+  onDropdownChange(eventTarget: any) {
+    this.selectedCategory = '';
+    this.selectCategory(eventTarget.value);
   }
 
   addToCart(productDetails: Product) {
