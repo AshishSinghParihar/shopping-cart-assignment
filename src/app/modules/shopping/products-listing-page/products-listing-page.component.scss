@@ -113,30 +113,30 @@
 
 /*----BIGGER DEVICES: FROM 568px TO above----*/
 
-@media only screen and (max-width: 1400px) and (min-width: 568px) {
+@media only screen and (max-width: 1400px) and (min-width: 576px) {
   .plp-container {
     .category-list {
       .prod-list-menu {
         display: block;
-        min-height: 500px;
+        min-height: 80vh;
       }
 
       .prod-list-select {
         display: none;
       }
+    }
 
-      .product-list {
-        min-height: 500px;
-        padding-top: 40px;
-        overflow: auto;
-      }
+    .product-list {
+      height: 80vh;
+      overflow: auto;
+      padding-top: 40px;
     }
   }
 }
 
 /*----SMALL PHONES: FROM 0px TO 480px----*/
 
-@media only screen and (max-width: 567px) and (min-width: 0px) {
+@media only screen and (max-width: 575px) and (min-width: 0px) {
   .plp-container {
     .category-list {
       background-color: #fff;
