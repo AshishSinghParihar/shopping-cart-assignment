@@ -1,7 +1,8 @@
 <div class="row plp-container">
   <div class="cols-xs-12 col-sm-4 col-md-3 col-lg-3 category-list">
-    <ul class="prod-list-menu">
+    <ul class="prod-list-menu" role="list">
       <li
+        role="listitem"
         *ngFor="let category of productCategories"
         [ngClass]="{ active: selectedCategory === category.id }"
         (click)="selectCategory(category.id)"
@@ -11,16 +12,17 @@
     </ul>
     <div class="prod-list-select">
       <select
-      (change)="onDropdownChange($event.target)"
-      #dropdown
-      class="form-select"
+        (change)="onDropdownChange($event.target)"
+        #dropdown
+        class="form-select"
         name="prodCategory"
-        role="Product Category Dropdown"
+        role="combobox"
         aria-label="Product Category Dropdown"
         id="prod-select"
       >
-        <option value="all" selected>All items</option>
+        <option value="all" selected role="option">All items</option>
         <option
+          role="option"
           [value]="category.id"
           *ngFor="let category of productCategories"
         >
@@ -37,7 +39,10 @@
           *ngFor="let product of filteredProductList"
           style="padding-bottom: 60px"
         >
-          <app-product-card [productDetail]="product" (addToCartEmitter)="addToCart($event)"></app-product-card>
+          <app-product-card
+            [productDetail]="product"
+            (addToCartEmitter)="addToCart($event)"
+          ></app-product-card>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-<div class="cart-container">
+<div class="cart-container" role="dialog">
   <div class="cart-header">
     <div>
       <span class="cart-title">My Cart</span>&nbsp;&nbsp;
@@ -11,6 +11,7 @@
         aria-hidden="false"
         aria-label="Close dialog button"
         (click)="closeDialog()"
+        role="button"
         >close
       </mat-icon>
     </div>
@@ -43,6 +44,7 @@
                   aria-hidden="false"
                   aria-label="Increase item"
                   (click)="decreaseCartItem(cartItem.product.id)"
+                  role="button"
                   >remove
                 </mat-icon>
                 {{ cartItem.noOfProducts }}
@@ -51,6 +53,7 @@
                   aria-hidden="false"
                   aria-label="Increase item"
                   (click)="increaseCartItem(cartItem.product.id)"
+                  role="button"
                   >add
                 </mat-icon>
                 <mat-icon
@@ -68,7 +71,7 @@
           </div>
         </div>
       </div>
-      <div class="cart-offer">
+      <div class="cart-offer" role="figure">
         <img src="assets/static/images/lowest-price.png" alt="Lowest price" />
         <p>You won't find it cheaper anywhere</p>
       </div>

@@ -1,18 +1,22 @@
 <div class="d-flex flex-column product-card">
   <div>
-    <h3>{{ productDetail.name }}</h3>
+    <h3 role="heading">{{ productDetail.name }}</h3>
   </div>
   <div class="prod-content">
-    <div class="prod-img-cont">
+    <div class="prod-img-cont" role="figure">
       <img
-      class="prod-img"
+        class="prod-img"
         [src]="productDetail.imageURL"
         [alt]="productDetail.name"
         [id]="productDetail.id"
       />
     </div>
     <div class="prod-desc-cont">
-      <p class="prod-desc" [title]="productDetail.description">
+      <p
+        class="prod-desc"
+        [title]="productDetail.description"
+        role="definition"
+      >
         {{ productDetail.description }}
       </p>
     </div>
@@ -24,11 +28,13 @@
           <span>MRP Rs.{{ productDetail.price }}</span>
         </div>
         <div class="col-6 p-0">
-          <button class="my-btn" (click)="onBuyButtonClick()">Buy Now</button>
+          <button class="my-btn" (click)="onBuyButtonClick()" role="button">
+            Buy Now
+          </button>
         </div>
       </div>
       <div class="small">
-        <button class="my-btn" (click)="onBuyButtonClick()">
+        <button class="my-btn" (click)="onBuyButtonClick()" role="button">
           Buy Now @ MRP Rs.{{ productDetail.price }}
         </button>
       </div>
