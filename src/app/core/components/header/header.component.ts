@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { UtilService } from 'src/app/core/services/util/util.service';
 import { ProductsCartComponent } from '../products-cart/products-cart.component';
@@ -19,7 +19,11 @@ export class HeaderComponent implements OnInit {
     this.screenWidth = window.innerWidth;
   }
 
-  constructor(private router: Router, private dialog: MatDialog, public utilService: UtilService) {}
+  constructor(
+    private router: Router,
+    private dialog: MatDialog,
+    public utilService: UtilService
+  ) {}
 
   ngOnInit(): void {
     this.getScreenSize();
@@ -40,13 +44,18 @@ export class HeaderComponent implements OnInit {
   openCartDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.ariaLabel = 'My cart';
-    dialogConfig.ariaDescribedBy = this.utilService.productCart.getCartDetails();
+    dialogConfig.ariaDescribedBy =
+      this.utilService.productCart.getCartDetails();
     dialogConfig.disableClose = true;
     dialogConfig.width = '40%';
     dialogConfig.data = {
-      isBigScreen: true
-    }
-    
+      isBigScreen: true,
+    };
+
     this.dialog.open(ProductsCartComponent, dialogConfig);
+  }
+
+  goToHome() {
+    this.router.navigate(['/products', 'home']);
   }
 }

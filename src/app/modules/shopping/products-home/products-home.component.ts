@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HttpService } from 'src/app/core/services/http/http.service';
@@ -46,6 +47,7 @@ export class ProductsHomeComponent implements OnInit {
   productCategories: any[] = [{}];
 
   constructor(
+    private router: Router,
     private httpService: HttpService,
     private utilService: UtilService,
   ) {
@@ -73,5 +75,9 @@ export class ProductsHomeComponent implements OnInit {
       );
       this.productCategories = this.utilService.filterAndSortCategories(resp);
     });
+  }
+
+  goToPLP() {
+    this.router.navigate(['/products', 'plp']);
   }
 }

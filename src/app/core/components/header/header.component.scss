@@ -9,8 +9,10 @@ nav {
     padding: 10px 0 0 0;
     font-weight: 600;
 
-    & > div {
-      padding: 0;
+    .large-header {
+      & > div {
+        padding: 0;
+      }
     }
 
     .logo {
@@ -78,6 +80,39 @@ nav {
 
       .cart-text {
         margin-left: 4%;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 578px) {
+  .header-row {
+    .large-header {
+      display: flex;
+    }
+
+    .small-header {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+  .header-row {
+    padding: 0 !important;
+
+    .large-header {
+      display: none;
+    }
+
+    .small-header {
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+
+      .cart-nav {
+        width: 9em;
+        margin-left: 0;
       }
     }
   }
