@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
+
+import { AuthService } from 'src/app/core/services/http/auth.service';
+import { UtilService } from 'src/app/core/services/util/util.service';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-signup',
@@ -9,8 +14,14 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
+  responseError: string = '';
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+    private utilService: UtilService
+  ) {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -27,9 +38,7 @@ export class SignupComponent implements OnInit {
           [
             Validators.required,
             Validators.minLength(6),
-            Validators.pattern(
-              '^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'
-            ),
+            Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
           ],
         ],
         cnfPassword: [null, [Validators.required]],
@@ -88,8 +97,31 @@ export class SignupComponent implements OnInit {
 
   onSignup() {
     if (this.signupForm.valid) {
-      this.router.navigate(['products/plp']);
-    }}
+      const formValue: User = this.signupForm.value;
+      const user = new User(
+        formValue.fName,
+        formValue.lName,
+        formValue.email,
+        formValue.password
+      );
+      this.authService
+        .signup(user)
+        .pipe(take(1))
+        .subscribe(
+          (resp: any) => {
+            this.utilService.openSnackBar(
+              'User registered successfully',
+              'Okay'
+            );
+            this.signupForm.reset();
+            this.router.navigate(['authentication/login']);
+          },
+          (error: string) => {
+            this.responseError = error;
+          }
+        );
+    }
+  }
 
   cnfPasswordValidator(password: string, confirmPassword: string) {
     return (formGroup: FormGroup) => {

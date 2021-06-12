@@ -6,6 +6,9 @@
     </p>
   </div>
   <div class="col-sm-12 col-md-6 col-lg-6 signup-form">
+    <div id="form-error" class="alert alert-danger" role="alert" *ngIf="responseError">
+      {{responseError}}
+    </div>
     <form [formGroup]="signupForm">
       <div class="fname-container">
         <mat-form-field appearance="fill">

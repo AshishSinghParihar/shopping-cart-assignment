@@ -1,11 +1,10 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
+
+import { AuthService } from 'src/app/core/services/http/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +13,13 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  responseError: string = '';
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -52,7 +56,17 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     if (this.loginForm.valid) {
-      this.router.navigate(['products/plp']);
+      const formValue = this.loginForm.value;
+      // this.router.navigate(['products/plp']);
+      this.authService.login(formValue.email, formValue.password).pipe(take(1)).subscribe(
+        (resp) => {
+          this.loginForm.reset();
+          this.router.navigate(['products/plp']);
+        },
+        (error) => {
+          this.responseError = error;
+        }
+      );
     }
   }
 }
