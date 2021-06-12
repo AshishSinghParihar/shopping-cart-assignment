@@ -7,21 +7,11 @@ import { ProductsListingPageComponent } from './products-listing-page/products-l
 const routes: Routes = [
   {
     path: '',
-    children: [
-      {
-        path: '',
-        redirectTo: 'home',
-        pathMatch: 'full',
-      },
-      {
-        path: 'home',
-        component: ProductsHomeComponent,
-      },
-      {
-        path: 'plp',
-        component: ProductsListingPageComponent,
-      },
-    ],
+    component: ProductsHomeComponent,
+  },
+  {
+    path: 'plp',
+    component: ProductsListingPageComponent,
   },
 ];
 
