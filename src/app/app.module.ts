@@ -35,4 +35,10 @@ import { ProductsCartComponent } from './core/components/products-cart/products-
   exports: [MatSnackBarModule],
   entryComponents: [ProductsCartComponent],
 })
+
+/**
+ * AppModule contains HeaderComponent and ProductsCartComponent.
+ * AppModule imports common core modules being used in the application.
+ * It also imports Angular Material modules.
+ */
 export class AppModule {}

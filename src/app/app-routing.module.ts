@@ -3,6 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ProductsCartComponent } from './core/components/products-cart/products-cart.component';
 
+/**
+ * The feature modules - ShoppingModule and AuthenticationModule are lazily loaded- using below routes.
+ *
+ * '/products' loads the ShoppingModule
+ *
+ * '/authentication' loads the AuthenticationModule
+ *
+ * '/cart' loads the ProductsCartComponent which is a part of AppModule.
+ */
 const routes: Routes = [
   {
     path: '',

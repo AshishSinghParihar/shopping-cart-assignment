@@ -1,4 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -21,10 +20,19 @@ export class LoginComponent implements OnInit {
     private authService: AuthService
   ) {}
 
+  /**
+   * ngOnInit() invokes initializeForm() method
+   */
   ngOnInit(): void {
     this.initializeForm();
   }
 
+  /**
+   * Login form, 'loginForm' is initialized here with two FormControls
+   *
+   * 1. Email: required
+   * 2. Password: required
+   */
   initializeForm() {
     this.loginForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
@@ -32,6 +40,14 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  /**
+   *
+   * @param {string} formControlName Name of the form control
+   * @returns {string} Error message for any form control
+   *
+   * This method returns the error message to be displayed in UI when a form control
+   * is invalid.
+   */
   getErrorMessage(formControlName: string) {
     const formControl = this.loginForm.get(formControlName);
 
@@ -54,19 +70,29 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  /**
+   * This method is called when 'Login' button is clicked in UI.
+   *
+   * It checks if the loginForm's validity.
+   * If the form is valid login API is accessed from AuthService.
+   * If the entered credentials are valid, the loginForm is reset and user is redirected to
+   * Products Listing Page. Otherwise, relevant error message is shown in UI.
+   */
   onLogin() {
     if (this.loginForm.valid) {
       const formValue = this.loginForm.value;
-      // this.router.navigate(['products/plp']);
-      this.authService.login(formValue.email, formValue.password).pipe(take(1)).subscribe(
-        (resp) => {
-          this.loginForm.reset();
-          this.router.navigate(['products/plp']);
-        },
-        (error) => {
-          this.responseError = error;
-        }
-      );
+      this.authService
+        .login(formValue.email, formValue.password)
+        .pipe(take(1))
+        .subscribe(
+          (resp) => {
+            this.loginForm.reset();
+            this.router.navigate(['products/plp']);
+          },
+          (error) => {
+            this.responseError = error;
+          }
+        );
     }
   }
 }

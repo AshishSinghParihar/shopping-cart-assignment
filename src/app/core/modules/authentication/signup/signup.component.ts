@@ -23,10 +23,22 @@ export class SignupComponent implements OnInit {
     private utilService: UtilService
   ) {}
 
+  /**
+   * ngOnInit() invokes initializeForm() method
+   */
   ngOnInit(): void {
     this.initializeForm();
   }
 
+  /**
+   * Signup form, 'signupForm' is initialized here with five FormControls
+   *
+   * 1. First name: required
+   * 2. Last name: required
+   * 3. Email: required
+   * 4. Password: required
+   * 5. Confirm password: required
+   */
   initializeForm() {
     this.signupForm = this.formBuilder.group(
       {
@@ -44,11 +56,19 @@ export class SignupComponent implements OnInit {
         cnfPassword: [null, [Validators.required]],
       },
       {
-        validator: this.cnfPasswordValidator('password', 'cnfPassword'),
+        validator: this.cnfPasswordValidator(),
       }
     );
   }
 
+  /**
+   *
+   * @param {string} formControlName Name of the form control
+   * @returns {string} Error message for any form control
+   *
+   * This method returns the error message to be displayed in UI when a form control
+   * is invalid.
+   */
   getErrorMessage(formControlName: string) {
     const formControl = this.signupForm.get(formControlName);
 
@@ -95,6 +115,13 @@ export class SignupComponent implements OnInit {
     }
   }
 
+  /**
+   * This method is envoked when 'Signup' button is clicked in UI.
+   *
+   * It validates 'signupForm'. If valid, the form values are sent to signup API through AuthService.
+   * If the process is successful, the 'signupForm' is reset and user is redirected to Login Page.
+   * Otherwise, relevant error message is displayed in UI.
+   */
   onSignup() {
     if (this.signupForm.valid) {
       const formValue: User = this.signupForm.value;
@@ -123,10 +150,14 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  cnfPasswordValidator(password: string, confirmPassword: string) {
+  /**
+   *
+   * @returns error object if values of 'password' and 'cnfPassword' do not match else null.
+   */
+  cnfPasswordValidator() {
     return (formGroup: FormGroup) => {
-      const passwordControl = formGroup.controls[password];
-      const confirmPasswordControl = formGroup.controls[confirmPassword];
+      const passwordControl = formGroup.controls['password'];
+      const confirmPasswordControl = formGroup.controls['cnfPassword'];
 
       if (!passwordControl || !confirmPasswordControl) {
         return null;
