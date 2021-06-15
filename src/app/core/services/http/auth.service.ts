@@ -20,7 +20,7 @@ interface IAuthResponseData {
   providedIn: 'root',
 })
 export class AuthService {
-  authErrorCodes: { [key: string]: string } = {
+  private _authErrorCodes: { [key: string]: string } = {
     EMAIL_EXISTS: 'The email address is already in use by another account.',
     OPERATION_NOT_ALLOWED: 'Password sign-in is disabled for this project.',
     TOO_MANY_ATTEMPTS_TRY_LATER:
@@ -61,8 +61,8 @@ export class AuthService {
   }
 
   private getAuthErrorMsg(errorCode: string): string {
-    if (this.authErrorCodes.hasOwnProperty(errorCode)) {
-      return this.authErrorCodes[errorCode];
+    if (this._authErrorCodes.hasOwnProperty(errorCode)) {
+      return this._authErrorCodes[errorCode];
     } else {
       return 'An unknown error occurred.';
     }
