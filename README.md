@@ -8,7 +8,11 @@ Clone this repo and navigate into the project folder and open Command Prompt to 
 
 ```
 npm install
-# or
+```
+
+OR
+
+```
 yarn install
 ```
 
@@ -26,8 +30,14 @@ Run the following command in Command Prompt inside project folder :
 
 ```
 ng s
-# or
+```
+
+OR
+
+```
 ng serve
 ```
 
-Open Chrome browser and go to [a link](http://localhost:4200/) to see the application running.
+Go to [localhost](http://localhost:4200/) to see the application running.
+
+Note: For better experience use Chrome browser
