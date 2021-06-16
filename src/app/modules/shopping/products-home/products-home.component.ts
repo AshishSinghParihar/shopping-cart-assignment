@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HttpService } from 'src/app/core/services/http/http.service';
 import { UtilService } from 'src/app/core/services/util/util.service';
 
@@ -11,40 +10,9 @@ import { UtilService } from 'src/app/core/services/util/util.service';
   styleUrls: ['./products-home.component.scss'],
 })
 export class ProductsHomeComponent implements OnInit {
-  carouselCustomOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: true,
-    dots: true,
-    navSpeed: 1000,
-    smartSpeed: 1000,
-    navText: [' Prev ', ' Next '],
-    responsive: {
-      0: {
-        items: 1,
-        loop: true,
-        nav: false,
-      },
-      480: {
-        items: 1,
-        loop: true,
-        nav: false,
-      },
-      768: {
-        items: 1,
-        loop: true,
-      },
-      940: {
-        items: 1,
-        loop: true,
-      },
-    },
-    nav: true,
-  };
-
   carouselData: any[] = [{}];
   productCategories: any[] = [{}];
+  slideInterval = 3000;
 
   constructor(
     private router: Router,

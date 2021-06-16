@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CarouselModule } from 'ngx-owl-carousel-o';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ProductsListingPageComponent } from './products-listing-page/products-listing-page.component';
 import { ProductsHomeComponent } from './products-home/products-home.component';
@@ -14,6 +14,6 @@ import { ProductCardComponent } from './product-card/product-card.component';
     ProductsHomeComponent,
     ProductCardComponent,
   ],
-  imports: [CommonModule, ProductsRoutingModule, CarouselModule],
+  imports: [CommonModule, ProductsRoutingModule, NgbModule],
 })
 export class ShoppingModule {}

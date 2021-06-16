@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { CarouselModule } from 'ngx-owl-carousel-o';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ProductsHomeComponent } from './products-home.component';
 
@@ -19,8 +19,8 @@ describe('ProductsHomeComponent', () => {
         BrowserAnimationsModule,
         RouterTestingModule,
         HttpClientModule,
-        CarouselModule,
         MatSnackBarModule,
+        NgbModule
       ],
     }).compileComponents();
   });

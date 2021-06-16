@@ -147,6 +147,17 @@ body {
   }
 }
 
+.product-home {
+  .carousel.slide {
+    .carousel-inner {
+      .picsum-img-wrapper {
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
 
 /*---------------------------------------------------------------------------*/
 /* MEDIA QUERIES */
@@ -217,5 +228,68 @@ body {
   .login-container {
     margin: 10px 50px;
     padding-bottom: 40px;
+  }
+}
+
+// CAROUSEL
+
+@media only screen and (min-width: 768px) {
+  .product-home {
+    .carousel.slide {
+      .carousel-inner {
+        .picsum-img-wrapper {
+          img {
+            width: 100%;
+          }
+        }
+      }
+
+      a {
+        text-decoration: none;
+
+        &.carousel-control-prev {
+          justify-content: start;
+        }
+
+        &.carousel-control-next {
+          justify-content: flex-end;
+        }
+
+        & > span {
+          background-color: #616161;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          padding: 1em;
+          border-radius: 1px;
+
+          &.carousel-control-prev-icon,
+          &.carousel-control-next-icon {
+            background-image: none !important;
+            width: 4em;
+          }
+
+          &.carousel-control-prev-icon::before {
+            content: "PREV";
+            font-size: 85%;
+          }
+
+          &.carousel-control-next-icon::before {
+            content: "NEXT";
+            font-size: 85%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .product-home {
+    .carousel.slide {
+      a {
+        display: none;
+      }
+    }
   }
 }
