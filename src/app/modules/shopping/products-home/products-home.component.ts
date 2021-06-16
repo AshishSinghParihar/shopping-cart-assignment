@@ -45,7 +45,8 @@ export class ProductsHomeComponent implements OnInit {
     });
   }
 
-  goToPLP() {
+  exploreCategory(categoryId: string) {
+    this.utilService.selectedCategoryEmitter.next(categoryId);
     this.router.navigate(['/products', 'plp']);
   }
 }

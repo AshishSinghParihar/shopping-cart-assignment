@@ -41,7 +41,7 @@
       <h3 class="cat-name">{{ category.name }}</h3>
       <p class="cat-desc">{{ category.description }}</p>
       <div class="cat-btn">
-        <button class="my-btn" (click)="goToPLP()">
+        <button class="my-btn" (click)="exploreCategory(category.id)">
           Explore {{ category.key }}
         </button>
       </div>

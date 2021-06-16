@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { BehaviorSubject } from 'rxjs';
 
 import { Cart } from 'src/app/modules/shopping/model/cart';
 import { Product } from 'src/app/modules/shopping/model/product';
@@ -11,6 +12,7 @@ import { Product } from 'src/app/modules/shopping/model/product';
 export class UtilService {
   productCart = new Cart();
   allProducts: Product[] = [];
+  selectedCategoryEmitter = new BehaviorSubject<string>('');
 
   constructor(private _snackBar: MatSnackBar) {}
 
@@ -29,9 +31,7 @@ export class UtilService {
   }
 
   getProductById(productId: string) {
-    return this.allProducts.filter(
-      (prod: Product) => prod.id === productId
-    )[0];
+    return this.allProducts.filter((prod: Product) => prod.id === productId)[0];
   }
 
   isInStock(productId: string) {
