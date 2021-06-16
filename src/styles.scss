@@ -257,7 +257,6 @@ body {
 
         & > span {
           background-color: #2a2a2a;
-          height: 50px;
           display: flex;
           align-items: center;
           padding: 1em;
@@ -267,16 +266,19 @@ body {
           &.carousel-control-next-icon {
             background-image: none !important;
             width: 4em;
+
+            &::before {
+              font-size: 85%;
+              font-weight: 600;
+            }
           }
 
           &.carousel-control-prev-icon::before {
             content: "PREV";
-            font-size: 85%;
           }
 
           &.carousel-control-next-icon::before {
             content: "NEXT";
-            font-size: 85%;
           }
         }
       }
