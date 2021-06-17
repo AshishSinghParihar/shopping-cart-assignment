@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
 
 import { HttpService } from 'src/app/core/services/http/http.service';
 import { UtilService } from 'src/app/core/services/util/util.service';
@@ -17,9 +19,8 @@ export class ProductsHomeComponent implements OnInit {
   constructor(
     private router: Router,
     private httpService: HttpService,
-    private utilService: UtilService,
-  ) {
-  }
+    private utilService: UtilService
+  ) {}
 
   ngOnInit(): void {
     this.getProductBanners();
@@ -27,22 +28,43 @@ export class ProductsHomeComponent implements OnInit {
   }
 
   getProductBanners() {
-    this.httpService.getProductBanners().subscribe((data: any) => {
-      data.map(
-        (record: any) =>
-          (record.bannerImageUrl = '/assets' + record.bannerImageUrl)
+    this.httpService
+      .getProductBanners()
+      .pipe(take(1))
+      .subscribe(
+        (data: any) => {
+          data.map(
+            (record: any) =>
+              (record.bannerImageUrl = '/assets' + record.bannerImageUrl)
+          );
+          this.carouselData = data;
+        },
+        (error: HttpErrorResponse) => {
+          if (error.status === 0) {
+            this.utilService.showErrorPage();
+          }
+        }
       );
-      this.carouselData = data;
-    });
   }
 
   getProductCategories() {
-    this.httpService.getProductCategories().subscribe((resp: any) => {
-      resp.map(
-        (record: any) => (record.imageUrl = '/assets' + record.imageUrl)
+    this.httpService
+      .getProductCategories()
+      .pipe(take(1))
+      .subscribe(
+        (resp: any) => {
+          resp.map(
+            (record: any) => (record.imageUrl = '/assets' + record.imageUrl)
+          );
+          this.productCategories =
+            this.utilService.filterAndSortCategories(resp);
+        },
+        (error: any) => {
+          if (error.status === 0) {
+            this.utilService.showErrorPage();
+          }
+        }
       );
-      this.productCategories = this.utilService.filterAndSortCategories(resp);
-    });
   }
 
   exploreCategory(categoryId: string) {

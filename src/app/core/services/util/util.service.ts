@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { BehaviorSubject, fromEvent, merge, Observable, Observer } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -15,7 +16,7 @@ export class UtilService {
   allProducts: Product[] = [];
   selectedCategoryEmitter = new BehaviorSubject<string>('');
 
-  constructor(private _snackBar: MatSnackBar) {}
+  constructor(private router: Router, private _snackBar: MatSnackBar) {}
 
   isApplicationOnline() {
     return merge<boolean>(
@@ -87,5 +88,9 @@ export class UtilService {
       options
     );
     this._snackBar.open(message, action, options);
+  }
+
+  showErrorPage() {
+    this.router.navigate(['error']);
   }
 }

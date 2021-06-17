@@ -15,9 +15,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/components/header/header.component';
 import { ProductsCartComponent } from './core/components/products-cart/products-cart.component';
+import { ErrorComponent } from './core/components/error/error.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, ProductsCartComponent],
+  declarations: [AppComponent, HeaderComponent, ProductsCartComponent, ErrorComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

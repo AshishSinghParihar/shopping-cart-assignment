@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 import { HttpService } from 'src/app/core/services/http/http.service';
 import { UtilService } from 'src/app/core/services/util/util.service';
@@ -14,8 +16,6 @@ export class ProductsListingPageComponent implements OnInit, OnDestroy {
   productCategories: any[] = [{}];
   filteredProductList: any[] = [{}];
   selectedCategory = '';
-  categoriesSub: Subscription;
-  productsSub: Subscription;
   selectedCatSub: Subscription;
 
   constructor(
@@ -29,39 +29,54 @@ export class ProductsListingPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.categoriesSub.unsubscribe();
-    this.productsSub.unsubscribe();
     this.selectedCatSub.unsubscribe();
   }
 
   getProductCategories() {
-    this.categoriesSub = this.httpService
+    this.httpService
       .getProductCategories()
-      .subscribe((resp: any) => {
-        resp.map(
-          (record: any) => (record.imageUrl = '/assets' + record.imageUrl)
-        );
-        this.productCategories = this.utilService.filterAndSortCategories(resp);
-      });
+      .pipe(take(1))
+      .subscribe(
+        (resp: any) => {
+          resp.map(
+            (record: any) => (record.imageUrl = '/assets' + record.imageUrl)
+          );
+          this.productCategories =
+            this.utilService.filterAndSortCategories(resp);
+        },
+        (error: HttpErrorResponse) => {
+          if (error.status === 0) {
+            this.utilService.showErrorPage();
+          }
+        }
+      );
   }
 
   getAllProducts() {
-    this.productsSub = this.httpService
+    this.httpService
       .getAllProducts()
-      .subscribe((resp: any) => {
-        resp.map(
-          (record: any) => (record.imageURL = '/assets' + record.imageURL)
-        );
-
-        this.utilService.allProducts = resp;
-        this.selectedCatSub =
-          this.utilService.selectedCategoryEmitter.subscribe(
-            (category: string) => {
-              this.selectedCategory = category;
-              this.filterProducts(this.selectedCategory);
-            }
+      .pipe(take(1))
+      .subscribe(
+        (resp: any) => {
+          resp.map(
+            (record: any) => (record.imageURL = '/assets' + record.imageURL)
           );
-      });
+
+          this.utilService.allProducts = resp;
+          this.selectedCatSub =
+            this.utilService.selectedCategoryEmitter.subscribe(
+              (category: string) => {
+                this.selectedCategory = category;
+                this.filterProducts(this.selectedCategory);
+              }
+            );
+        },
+        (error: HttpErrorResponse) => {
+          if (error.status === 0) {
+            this.utilService.showErrorPage();
+          }
+        }
+      );
   }
 
   selectCategory(category: string) {
