@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 
 import { AuthService } from 'src/app/core/services/http/auth.service';
+import { UtilService } from 'src/app/core/services/util/util.service';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +14,13 @@ import { AuthService } from 'src/app/core/services/http/auth.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   responseError: string = '';
+  onlineOffline: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private utilService: UtilService
   ) {}
 
   /**
@@ -25,6 +28,9 @@ export class LoginComponent implements OnInit {
    */
   ngOnInit(): void {
     this.initializeForm();
+    this.utilService.isApplicationOnline().subscribe((isOnline) => {
+      this.onlineOffline = isOnline;
+    });
   }
 
   /**
@@ -36,7 +42,14 @@ export class LoginComponent implements OnInit {
   initializeForm() {
     this.loginForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required]],
+      password: [
+        null,
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
+        ],
+      ],
     });
   }
 
@@ -62,6 +75,10 @@ export class LoginComponent implements OnInit {
     } else if (formControlName === 'password' && formControl?.invalid) {
       if (formControl.hasError('required')) {
         return 'Password is required';
+      } else if (formControl.hasError('minlength')) {
+        return 'Length of password should be atleast 6 characters';
+      } else if (formControl.hasError('pattern')) {
+        return 'Password: a.	Must have a number and alphabet. b. Cannot have spaces';
       } else {
         return '';
       }
@@ -80,19 +97,24 @@ export class LoginComponent implements OnInit {
    */
   onLogin() {
     if (this.loginForm.valid) {
-      const formValue = this.loginForm.value;
-      this.authService
-        .login(formValue.email, formValue.password)
-        .pipe(take(1))
-        .subscribe(
-          (resp) => {
-            this.loginForm.reset();
-            this.router.navigate(['products/plp']);
-          },
-          (error) => {
-            this.responseError = error;
-          }
-        );
+      if (this.onlineOffline) {
+        const formValue = this.loginForm.value;
+        this.authService
+          .login(formValue.email, formValue.password)
+          .pipe(take(1))
+          .subscribe(
+            (resp) => {
+              this.loginForm.reset();
+              this.router.navigate(['products/plp']);
+            },
+            (error) => {
+              this.responseError = error;
+            }
+          );
+      } else {
+        this.loginForm.reset();
+        this.router.navigate(['products/plp']);
+      }
     }
   }
 }

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, fromEvent, merge, Observable, Observer } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Cart } from 'src/app/modules/shopping/model/cart';
 import { Product } from 'src/app/modules/shopping/model/product';
@@ -15,6 +16,17 @@ export class UtilService {
   selectedCategoryEmitter = new BehaviorSubject<string>('');
 
   constructor(private _snackBar: MatSnackBar) {}
+
+  isApplicationOnline() {
+    return merge<boolean>(
+      fromEvent(window, 'offline').pipe(map(() => false)),
+      fromEvent(window, 'online').pipe(map(() => true)),
+      new Observable((sub: Observer<boolean>) => {
+        sub.next(navigator.onLine);
+        sub.complete();
+      })
+    );
+  }
 
   filterAndSortCategories(categories: any) {
     return categories

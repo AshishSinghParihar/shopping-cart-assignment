@@ -15,6 +15,7 @@ import { User } from '../model/user';
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   responseError: string = '';
+  onlineOffline: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,6 +29,9 @@ export class SignupComponent implements OnInit {
    */
   ngOnInit(): void {
     this.initializeForm();
+    this.utilService.isApplicationOnline().subscribe((isOnline) => {
+      this.onlineOffline = isOnline;
+    });
   }
 
   /**
@@ -124,29 +128,34 @@ export class SignupComponent implements OnInit {
    */
   onSignup() {
     if (this.signupForm.valid) {
-      const formValue: User = this.signupForm.value;
-      const user = new User(
-        formValue.fName,
-        formValue.lName,
-        formValue.email,
-        formValue.password
-      );
-      this.authService
-        .signup(user)
-        .pipe(take(1))
-        .subscribe(
-          (resp: any) => {
-            this.utilService.openSnackBar(
-              'User registered successfully',
-              'Okay'
-            );
-            this.signupForm.reset();
-            this.router.navigate(['authentication/login']);
-          },
-          (error: string) => {
-            this.responseError = error;
-          }
+      if (this.onlineOffline) {
+        const formValue: User = this.signupForm.value;
+        const user = new User(
+          formValue.fName,
+          formValue.lName,
+          formValue.email,
+          formValue.password
         );
+        this.authService
+          .signup(user)
+          .pipe(take(1))
+          .subscribe(
+            (resp: any) => {
+              this.utilService.openSnackBar(
+                'User registered successfully',
+                'Okay'
+              );
+              this.signupForm.reset();
+              this.router.navigate(['authentication/login']);
+            },
+            (error: string) => {
+              this.responseError = error;
+            }
+          );
+      } else {
+        this.signupForm.reset();
+        this.router.navigate(['authentication/login']);
+      }
     }
   }
 

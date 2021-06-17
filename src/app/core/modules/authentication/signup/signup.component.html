@@ -1,13 +1,24 @@
 <div class="signup-container row">
   <div class="col-sm-12 col-md-6 col-lg-6 signup-text">
     <h3 class="signup-heading">Signup</h3>
-    <p class="signup-para">
-      We do not share your personal details with anyone
-    </p>
+    <p class="signup-para">We do not share your personal details with anyone</p>
   </div>
   <div class="col-sm-12 col-md-6 col-lg-6 signup-form">
-    <div id="form-error" class="alert alert-danger" role="alert" *ngIf="responseError">
-      {{responseError}}
+    <div
+      id="form-error"
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="responseError"
+    >
+      {{ responseError }}
+    </div>
+    <div
+      class="alert alert-warning interent-connection"
+      role="alert"
+      *ngIf="!onlineOffline"
+    >
+      <span>You are offline!</span><br />
+      Connect to internet to save your details on server.
     </div>
     <form [formGroup]="signupForm">
       <div class="fname-container">

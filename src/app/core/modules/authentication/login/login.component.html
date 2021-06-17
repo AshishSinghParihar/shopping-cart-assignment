@@ -6,8 +6,22 @@
     </p>
   </div>
   <div class="col-sm-12 col-md-6 col-lg-6 login-form">
-    <div id="form-error" class="alert alert-danger" role="alert" *ngIf="responseError">
-      {{responseError}}
+    <div
+      id="form-error"
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="responseError"
+    >
+      {{ responseError }}
+    </div>
+    <div
+      class="alert alert-warning interent-connection"
+      role="alert"
+      *ngIf="!onlineOffline"
+    >
+      <span>You are offline!</span><br />
+      Credentials will not be validated from server. Enter any credentials in
+      valid format to login.
     </div>
     <form [formGroup]="loginForm">
       <div class="email-container">
@@ -18,14 +32,20 @@
             placeholder="email@example.com"
             formControlName="email"
           />
-          <mat-error *ngIf="loginForm.get('email')?.invalid">{{getErrorMessage('email')}}</mat-error>
+          <mat-hint>test@test.com</mat-hint>
+          <mat-error *ngIf="loginForm.get('email')?.invalid">{{
+            getErrorMessage("email")
+          }}</mat-error>
         </mat-form-field>
       </div>
       <div class="password-container">
         <mat-form-field appearance="fill">
           <mat-label>Password</mat-label>
           <input matInput type="password" formControlName="password" />
-          <mat-error *ngIf="loginForm.get('password')?.invalid">{{getErrorMessage('password')}}</mat-error>
+          <mat-hint>admin123</mat-hint>
+          <mat-error *ngIf="loginForm.get('password')?.invalid">{{
+            getErrorMessage("password")
+          }}</mat-error>
         </mat-form-field>
       </div>
       <div class="login-btn-container">

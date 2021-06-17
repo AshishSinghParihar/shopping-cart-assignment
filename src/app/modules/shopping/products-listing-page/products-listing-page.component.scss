@@ -17,12 +17,16 @@
         color: $category-font-color;
         font-weight: 600;
         cursor: pointer;
-      }
 
-      li:hover,
-      li.active {
-        color: rgb(116, 116, 116);
-        background-color: #dddddd;
+        &:hover {
+          color: rgb(116, 116, 116);
+          background-color: #e5e5e5;
+        }
+
+        &.active {
+          color: rgb(116, 116, 116);
+          background-color: #dddddd;
+        }
       }
     }
     .prod-list-select {
