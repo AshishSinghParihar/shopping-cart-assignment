@@ -19,20 +19,24 @@
       >
         {{ productDetail.description }}
       </p>
-      
-      <button class="my-btn buy-btn-sm" (click)="onBuyButtonClick()" role="button">
+
+      <button
+        class="my-btn buy-btn-sm"
+        (click)="onBuyButtonClick()"
+        role="button"
+      >
         Buy Now @ MRP Rs.{{ productDetail.price }}
       </button>
     </div>
   </div>
   <div>
     <div class="prod-price">
-      <div class="buy-btn-lg row">
-        <div class="col-6">
+      <div class="buy-btn-lg">
+        <div>
           <span>MRP Rs.{{ productDetail.price }}</span>
         </div>
-        <div class="col-6 p-0">
-          <button class="my-btn buy-btn-lg" (click)="onBuyButtonClick()" role="button">
+        <div>
+          <button class="my-btn" (click)="onBuyButtonClick()" role="button">
             Buy Now
           </button>
         </div>

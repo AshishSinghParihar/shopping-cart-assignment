@@ -74,10 +74,10 @@
         .prod-desc {
           font-size: 74%;
           line-height: 1.5;
+        }
 
-          .buy-btn-sm {
-            display: none;
-          }
+        .buy-btn-sm {
+          display: none;
         }
       }
     }
@@ -87,6 +87,7 @@
       }
       .buy-btn-lg {
         display: flex;
+        justify-content: space-between;
       }
     }
   }

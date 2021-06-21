@@ -28,7 +28,7 @@ nav {
 
     .nav li a {
       cursor: pointer;
-      padding: 4px 0;
+      padding: 5px;
       color: #727272;
       text-decoration: none;
       font-size: 90%;
@@ -37,9 +37,12 @@ nav {
       transition: border-bottom 0.2s;
     }
 
-    .main-nav li a:hover,
-    .main-nav li a:active {
-      border-bottom: 2px solid $primary-color;
+    .main-nav li a,
+    .auth-nav li a {
+      &.active,
+      &:hover {
+        border-bottom: 2px solid $primary-color;
+      }
     }
 
     .main-nav {
@@ -49,6 +52,7 @@ nav {
     .auth-nav {
       float: right;
       font-size: 80%;
+      margin-bottom: 5px;
     }
 
     .main-nav li {
