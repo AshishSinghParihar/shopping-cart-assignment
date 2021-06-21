@@ -41,3 +41,11 @@ ng serve
 Go to [localhost](http://localhost:4200/) to see the application running.
 
 Note: For better experience use Chrome browser
+
+## Testing application
+
+Run the following command in Command Prompt inside project folder :
+
+```
+ng test
+```
