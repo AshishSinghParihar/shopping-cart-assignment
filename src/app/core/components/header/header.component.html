@@ -1,7 +1,7 @@
 <nav>
   <div class="row header-row">
     <div class="large-header row">
-      <div class="col-sm-2 col-md-2 col-lg-2">
+      <div class="col-sm-4 col-md-3">
         <img
           src="assets/static/images/logo.png"
           alt="Sabka Bazaar logo"
@@ -9,13 +9,13 @@
           (click)="goToHome()"
         />
       </div>
-      <div class="col-sm-7 col-md-7 col-lg-8">
+      <div class="col-sm-5 col-md-7">
         <ul class="nav main-nav">
           <li><a (click)="navigate('products/')">Home</a></li>
           <li><a (click)="navigate('products/plp')">Products</a></li>
         </ul>
       </div>
-      <div class="col-sm-3 col-md-3 col-lg-2 d-flex flex-column text-end">
+      <div class="col-sm-3 col-md-2 d-flex flex-column text-end">
         <ul class="nav auth-nav">
           <li><a (click)="navigate('authentication/login')">SignIn</a></li>
           <li><a (click)="navigate('authentication/signup')">Register</a></li>

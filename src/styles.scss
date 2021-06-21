@@ -1,8 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-// @import "./resources/css/queries.scss";
-// @import "./resources/vendors/css/grid.scss";
-// @import "./resources/vendors/css/normalize.scss";
 // @import "node_modules/ionicons/dist/ionicons/ionicons.esm.js";
 @import "./resources/css/variables.scss";
 
@@ -26,6 +23,7 @@ body {
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
   min-height: 100vh;
+  min-width: 356px;
 }
 
 .row {

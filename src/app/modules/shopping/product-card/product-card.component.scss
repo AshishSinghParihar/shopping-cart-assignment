@@ -37,7 +37,7 @@
   .prod-price {
     margin-top: 5px;
     padding: 7px 0;
-    .large {
+    .buy-btn-lg {
       margin: 0;
       div:first-child {
         padding: 0;
@@ -74,24 +74,33 @@
         .prod-desc {
           font-size: 74%;
           line-height: 1.5;
+
+          .buy-btn-sm {
+            display: none;
+          }
         }
       }
     }
     .prod-price {
-      .small {
+      .buy-btn-md {
         display: none;
       }
-      .large {
+      .buy-btn-lg {
         display: flex;
       }
     }
   }
 }
 
-@media only screen and (max-width: 992px) and (min-width: 0px) {
+@media only screen and (max-width: 992px) and (min-width: 576px) {
   .product-card {
+    .prod-desc-cont {
+      .buy-btn-sm {
+        display: none;
+      }
+    }
     .prod-price {
-      .small {
+      .buy-btn-md {
         display: block;
 
         .my-btn {
@@ -99,10 +108,57 @@
           padding: 7px 0;
         }
       }
-      .large {
+      .buy-btn-lg {
         display: none;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 575px) and (min-width: 0px) {
+  h3 {
+    height: 20px !important;
+  }
+
+  .prod-content {
+    display: flex;
+    margin: 10px 0;
+
+    .prod-img-cont {
+      flex: 1 1 0;
+
+      .prod-img {
+        width: 135px;
+      }
+    }
+
+    .prod-desc-cont {
+      flex: 1 1 0;
+      height: 138px;
+      background-color: #fff !important;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+
+      .prod-desc {
+        font-size: 90%;
+        line-height: 1.3;
+        background-color: rgba($grey-bg, 0.7);
+        height: 90px;
+        padding: 5px;
+        overflow: hidden;
+      }
+
+      .buy-btn-sm {
+        margin-top: auto;
+        display: block;
+        font-size: 90%;
+      }
+    }
+  }
+
+  .prod-price {
+    display: none;
   }
 }
 
@@ -124,28 +180,6 @@
       .prod-desc {
         font-size: 72%;
         line-height: 1.8;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 575px) and (min-width: 0px) {
-  .prod-content {
-    display: flex;
-    .prod-img-cont {
-      flex: 1 1 0;
-
-      .prod-img {
-        width: 135px;
-      }
-    }
-    .prod-desc-cont {
-      flex: 1 1 0;
-      height: 138px;
-
-      .prod-desc {
-        font-size: 90%;
-        line-height: 1.5;
       }
     }
   }
