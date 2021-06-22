@@ -29,15 +29,11 @@ export class HeaderComponent implements OnInit {
     this.getScreenSize();
   }
 
-  navigate(param: string) {
-    this.router.navigate([param]);
-  }
-
   openCart() {
     if (this.screenWidth > 992) {
       this.openCartDialog();
     } else {
-      this.navigate('cart');
+      this.router.navigate(['cart']);
     }
   }
 
