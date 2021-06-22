@@ -1,6 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 
 import { HttpService } from 'src/app/core/services/http/http.service';
@@ -12,11 +11,10 @@ import { Product } from '../model/product';
   templateUrl: './products-listing-page.component.html',
   styleUrls: ['./products-listing-page.component.scss'],
 })
-export class ProductsListingPageComponent implements OnInit, OnDestroy {
+export class ProductsListingPageComponent implements OnInit {
   productCategories: any[] = [{}];
   filteredProductList: any[] = [{}];
   selectedCategory = '';
-  selectedCatSub: Subscription;
 
   constructor(
     private httpService: HttpService,
@@ -24,12 +22,16 @@ export class ProductsListingPageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.utilService.selectedCategoryEmitter
+      .pipe(take(1))
+      .subscribe((category: string) => {
+        this.selectedCategory = category;
+        this.filterProducts(this.selectedCategory);
+      });
     this.getProductCategories();
-    this.getAllProducts();
-  }
-
-  ngOnDestroy() {
-    this.selectedCatSub.unsubscribe();
+    if (this.utilService.allProducts.length === 0) {
+      this.getAllProducts();
+    }
   }
 
   getProductCategories() {
@@ -61,15 +63,8 @@ export class ProductsListingPageComponent implements OnInit, OnDestroy {
           resp.map(
             (record: any) => (record.imageURL = '/assets' + record.imageURL)
           );
-
           this.utilService.allProducts = resp;
-          this.selectedCatSub =
-            this.utilService.selectedCategoryEmitter.subscribe(
-              (category: string) => {
-                this.selectedCategory = category;
-                this.filterProducts(this.selectedCategory);
-              }
-            );
+          this.filterProducts(this.selectedCategory);
         },
         (error: HttpErrorResponse) => {
           if (error.status === 0) {

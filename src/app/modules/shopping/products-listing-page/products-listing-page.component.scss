@@ -24,8 +24,10 @@
         }
 
         &.active {
-          color: rgb(116, 116, 116);
-          background-color: #dddddd;
+          // color: rgb(116, 116, 116);
+          // background-color: #dddddd;
+          color: #fff;
+          background-color: $primary-color;
         }
       }
     }
