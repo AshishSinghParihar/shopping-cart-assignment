@@ -12,25 +12,48 @@ import { Product } from '../model/product';
   styleUrls: ['./products-listing-page.component.scss'],
 })
 export class ProductsListingPageComponent implements OnInit {
+  /**
+   * Variable to store all the categoris of the products fetched from the server
+   */
   productCategories: any[] = [{}];
+
+  /**
+   * Variable to store the list of filtered products
+   */
   filteredProductList: any[] = [{}];
+
+  /**
+   * This contains the value selected category ID in order to finter products based on selected category.
+   * By default, its value is empty string which means no category has been selected for filtering products
+   */
   selectedCategory = '';
 
+  /**
+   * Dependencies are injected the constructor
+   *
+   * @param httpService {HttpService} Used to perform HTTP calls for fetching data from local server
+   * @param utilService {UtilService} Used to envoke common/shared functions
+   */
   constructor(
     private httpService: HttpService,
     private utilService: UtilService
   ) {}
 
+  /**
+   * In this method, we subscribe to BehaviourSubject being emitted from ProductsHomeComponent to identify the
+   * selected category and set the `selectedCategory` variable
+   */
   ngOnInit(): void {
     this.utilService.selectedCategoryEmitter
       .pipe(take(1))
       .subscribe((category: string) => {
         this.selectedCategory = category;
-        this.filterProducts(this.selectedCategory);
       });
     this.getProductCategories();
     if (this.utilService.allProducts.length === 0) {
       this.getAllProducts();
+    } else {
+      this.filterProducts(this.selectedCategory);
     }
   }
 

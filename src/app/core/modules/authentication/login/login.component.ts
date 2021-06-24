@@ -12,10 +12,29 @@ import { UtilService } from 'src/app/core/services/util/util.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  /**
+   * FormGroup to store FormControls for login form
+   */
   loginForm: FormGroup;
+
+  /**
+   * Stores the error messages from server
+   */
   responseError: string = '';
+
+  /**
+   * Variable to store `true` if internet connection is available else `false`
+   */
   onlineOffline: boolean;
 
+  /**
+   * Dependencies are injected the constructor
+   * 
+   * @param formBuilder {FormBuilder} Used to initialize login form
+   * @param router {Router} Used to navigate from one path to another
+   * @param authService {AuthService} Used to perform HTTP calls for validating user credentials
+   * @param utilService {UtilService} Used to envoke common/shared functions
+   */
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,

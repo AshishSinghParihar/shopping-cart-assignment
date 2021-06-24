@@ -13,10 +13,29 @@ import { User } from '../model/user';
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
+  /**
+   * FormGroup to store FormControls for signup form
+   */
   signupForm: FormGroup;
+
+  /**
+   * Stores the error messages from server
+   */
   responseError: string = '';
+
+  /**
+   * Variable to store `true` if internet connection is available else `false`
+   */
   onlineOffline: boolean;
 
+  /**
+   * Dependencies are injected the constructor
+   * 
+   * @param formBuilder {FormBuilder} Used to initialize login form
+   * @param router {Router} Used to navigate from one path to another
+   * @param authService {AuthService} Used to perform HTTP calls for storing user credentials
+   * @param utilService {UtilService} Used to envoke common/shared functions
+   */
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
