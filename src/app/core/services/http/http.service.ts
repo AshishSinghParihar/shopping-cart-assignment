@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Product } from 'src/app/shopping/model/product';
+import { Banner } from '../../model/banner';
+import { Category } from '../../model/category';
+import { Product } from 'src/app/core/model/product';
 
 const BASE_URL = 'http://localhost:5000';
 
@@ -12,17 +15,17 @@ const BASE_URL = 'http://localhost:5000';
 export class HttpService {
   constructor(private http: HttpClient) {}
 
-  getProductBanners() {
-    return this.http.get(BASE_URL + '/banners');
+  getProductBanners(): Observable<Banner[]> {
+    return this.http.get<Banner[]>(BASE_URL + '/banners');
   }
 
-  getProductCategories() {
-    return this.http.get(BASE_URL + '/categories');
+  getProductCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(BASE_URL + '/categories');
   }
 
-  getAllProducts() {
+  getAllProducts(): Observable<Product[]> {
     return this.http
-      .get(BASE_URL + '/products')
+      .get<Product>(BASE_URL + '/products')
       .pipe(
         map((data: any) => data.map((product: any) => new Product(product)))
       );

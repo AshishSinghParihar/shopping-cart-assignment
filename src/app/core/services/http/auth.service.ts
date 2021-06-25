@@ -3,18 +3,11 @@ import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { User } from '../../authentication/model/user';
+import { AuthResponse } from '../../model/auth-response';
+
+import { User } from '../../model/user';
 
 const FIREBASE_AUTH_API = 'https://identitytoolkit.googleapis.com/v1/';
-
-interface IAuthResponseData {
-  idToken: string;
-  email: string;
-  refreshToken: string;
-  expiresIn: string;
-  localId: string;
-  registered?: boolean;
-}
 
 @Injectable({
   providedIn: 'root',
@@ -38,7 +31,7 @@ export class AuthService {
 
   signup(user: User) {
     return this.http
-      .post<IAuthResponseData>(
+      .post<AuthResponse>(
         FIREBASE_AUTH_API + 'accounts:signUp?key=' + environment.firebaseAPIKey,
         user
       )
@@ -47,7 +40,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     return this.http
-      .post<IAuthResponseData>(
+      .post<AuthResponse>(
         FIREBASE_AUTH_API +
           'accounts:signInWithPassword?key=' +
           environment.firebaseAPIKey,

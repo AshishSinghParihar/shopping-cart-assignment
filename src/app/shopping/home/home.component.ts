@@ -5,6 +5,8 @@ import { take } from 'rxjs/operators';
 
 import { HttpService } from 'src/app/core/services/http/http.service';
 import { CommonUtilService } from 'src/app/core/services/common-util/common-util.service';
+import { Banner } from 'src/app/core/model/banner';
+import { Category } from 'src/app/core/model/category';
 
 @Component({
   selector: 'app-products-home',
@@ -12,8 +14,8 @@ import { CommonUtilService } from 'src/app/core/services/common-util/common-util
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  carouselData: any[] = [{}];
-  productCategories: any[] = [{}];
+  carouselData: Banner[] = [];
+  productCategories: Category[] = [];
   slideInterval = 3000;
 
   constructor(
@@ -32,9 +34,9 @@ export class HomeComponent implements OnInit {
       .getProductBanners()
       .pipe(take(1))
       .subscribe(
-        (data: any) => {
+        (data: Banner[]) => {
           data.map(
-            (record: any) =>
+            (record: Banner) =>
               (record.bannerImageUrl = '/assets' + record.bannerImageUrl)
           );
           this.carouselData = data;
@@ -52,14 +54,15 @@ export class HomeComponent implements OnInit {
       .getProductCategories()
       .pipe(take(1))
       .subscribe(
-        (resp: any) => {
+        (resp: Category[]) => {
           resp.map(
-            (record: any) => (record.imageUrl = '/assets' + record.imageUrl)
+            (record: Category) =>
+              (record.imageUrl = '/assets' + record.imageUrl)
           );
           this.productCategories =
             this.utilService.filterAndSortCategories(resp);
         },
-        (error: any) => {
+        (error: HttpErrorResponse) => {
           if (error.status === 0) {
             this.utilService.showErrorPage();
           }

@@ -5,8 +5,9 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, fromEvent, merge, Observable, Observer } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Cart } from 'src/app/shopping/model/cart';
-import { Product } from 'src/app/shopping/model/product';
+import { Cart } from 'src/app/core/model/cart';
+import { Product } from 'src/app/core/model/product';
+import { Category } from '../../model/category';
 
 @Injectable({
   providedIn: 'root',
@@ -41,10 +42,10 @@ export class CommonUtilService {
     );
   }
 
-  filterAndSortCategories(categories: any) {
+  filterAndSortCategories(categories: Category[]) {
     return categories
-      .filter((record: any) => record.enabled === true)
-      .sort(function (first: any, second: any) {
+      .filter((record: Category) => record.enabled === true)
+      .sort(function (first: Category, second: Category) {
         if (first.order > second.order) {
           return 1;
         }

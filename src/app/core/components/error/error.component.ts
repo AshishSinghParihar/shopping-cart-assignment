@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { HttpService } from '../../services/http/http.service';
+import { Banner } from '../../model/banner';
 
 @Component({
   selector: 'app-error',
@@ -34,7 +35,7 @@ export class ErrorComponent implements OnInit, OnDestroy, DoCheck {
   ngDoCheck() {
     this.categoriesSub = this.httpService
       .getProductBanners()
-      .subscribe((resp: any) => {
+      .subscribe((resp: Banner[]) => {
         this.router.navigate(['/products']);
       });
   }

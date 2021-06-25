@@ -4,7 +4,8 @@ import { take } from 'rxjs/operators';
 
 import { HttpService } from 'src/app/core/services/http/http.service';
 import { CommonUtilService } from 'src/app/core/services/common-util/common-util.service';
-import { Product } from '../model/product';
+import { Product } from '../../core/model/product';
+import { Category } from 'src/app/core/model/category';
 
 @Component({
   selector: 'app-products-listing-page',
@@ -15,12 +16,12 @@ export class ListingPageComponent implements OnInit {
   /**
    * Variable to store all the categoris of the products fetched from the server
    */
-  productCategories: any[] = [{}];
+  productCategories: Category[] = [];
 
   /**
    * Variable to store the list of filtered products
    */
-  filteredProductList: any[] = [{}];
+  filteredProductList: Product[] = [];
 
   /**
    * This contains the value selected category ID in order to finter products based on selected category.
@@ -62,9 +63,10 @@ export class ListingPageComponent implements OnInit {
       .getProductCategories()
       .pipe(take(1))
       .subscribe(
-        (resp: any) => {
+        (resp: Category[]) => {
           resp.map(
-            (record: any) => (record.imageUrl = '/assets' + record.imageUrl)
+            (record: Category) =>
+              (record.imageUrl = '/assets' + record.imageUrl)
           );
           this.productCategories =
             this.utilService.filterAndSortCategories(resp);
@@ -82,9 +84,9 @@ export class ListingPageComponent implements OnInit {
       .getAllProducts()
       .pipe(take(1))
       .subscribe(
-        (resp: any) => {
+        (resp: Product[]) => {
           resp.map(
-            (record: any) => (record.imageURL = '/assets' + record.imageURL)
+            (record: Product) => (record.imageURL = '/assets' + record.imageURL)
           );
           this.utilService.allProducts = resp;
           this.filterProducts(this.selectedCategory);
@@ -111,7 +113,7 @@ export class ListingPageComponent implements OnInit {
       this.filteredProductList = Object.assign(this.utilService.allProducts);
     } else {
       this.filteredProductList = this.utilService.allProducts.filter(
-        (product: any) => product.category === category
+        (product: Product) => product.category === category
       );
     }
   }

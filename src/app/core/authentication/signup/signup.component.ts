@@ -5,7 +5,7 @@ import { take } from 'rxjs/operators';
 
 import { AuthService } from 'src/app/core/services/http/auth.service';
 import { CommonUtilService } from 'src/app/core/services/common-util/common-util.service';
-import { User } from '../model/user';
+import { User } from '../../model/user';
 
 @Component({
   selector: 'app-signup',
