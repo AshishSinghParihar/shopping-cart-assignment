@@ -4,8 +4,9 @@
   "description": "This is a shopping cart coding exercise",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "canned -p 5000 ./src/assets/server"
+    "test": "ng test",
+    "start": "canned -p 5000 ./src/assets/server",
+    "compodoc": "./node_modules/.bin/compodoc -p ./tsconfig.app.json"
   },
   "author": "",
   "license": "MIT",
@@ -21,6 +22,7 @@
     "@angular/platform-browser": "~12.0.2",
     "@angular/platform-browser-dynamic": "~12.0.2",
     "@angular/router": "~12.0.2",
+    "@compodoc/compodoc": "^1.1.11",
     "@ng-bootstrap/ng-bootstrap": "^9.1.2",
     "bootstrap": "^5.0.1",
     "canned": "^0.3.12",
