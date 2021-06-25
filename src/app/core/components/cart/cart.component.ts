@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { UtilService } from 'src/app/core/services/util/util.service';
+import { CommonUtilService } from 'src/app/core/services/common-util/common-util.service';
 
 @Component({
   selector: 'app-products-cart',
@@ -16,14 +16,14 @@ export class CartComponent implements OnInit {
    * Dependencies are injected the constructor
    *
    * @param router {Router} Used to navigate from one path to another
-   * @param utilService {UtilService} Used to envoke common/shared functions
+   * @param utilService {CommonUtilService} Used to envoke common/shared functions
    * @param dialogRef {MatDialogRef} Stores the reference of `CartComponent`
    * which is available as a dialog box
    * @param data {MAT_DIALOG_DATA} Stores the data being passed from the parent component to the dialog box
    */
   constructor(
     private router: Router,
-    public utilService: UtilService,
+    public utilService: CommonUtilService,
     @Optional() private dialogRef: MatDialogRef<CartComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: { isBigScreen: boolean }
   ) {}
@@ -40,7 +40,7 @@ export class CartComponent implements OnInit {
 
   /**
    * This method is called when 'minus' button is clicked on an item, which in turn
-   * calls the `removeItemFromCart()` method in UtilService in order to remove the
+   * calls the `removeItemFromCart()` method in CommonUtilService in order to remove the
    * selected item from cart and also add it to the available stocks of that product.
    *
    * @param productId {string} Id of the product
@@ -53,7 +53,7 @@ export class CartComponent implements OnInit {
 
   /**
    * This method is called when 'plus' button is clicked on an item, which in turn
-   * calls the `addItemToCart()` method in UtilService in order to add the
+   * calls the `addItemToCart()` method in CommonUtilService in order to add the
    * selected item from cart and also remove it from the available stocks of that product.
    *
    * @param productId {string} Id of the product

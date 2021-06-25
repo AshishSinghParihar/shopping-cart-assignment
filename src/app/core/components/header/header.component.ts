@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
-import { UtilService } from 'src/app/core/services/util/util.service';
+import { CommonUtilService } from 'src/app/core/services/common-util/common-util.service';
 import { CartComponent } from '../cart/cart.component';
 
 @Component({
@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private dialog: MatDialog,
-    public utilService: UtilService
+    public utilService: CommonUtilService
   ) {}
 
   /**

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 
 import { AuthService } from 'src/app/core/services/http/auth.service';
-import { UtilService } from 'src/app/core/services/util/util.service';
+import { CommonUtilService } from 'src/app/core/services/common-util/common-util.service';
 
 @Component({
   selector: 'app-login',
@@ -33,13 +33,13 @@ export class LoginComponent implements OnInit {
    * @param formBuilder {FormBuilder} Used to initialize login form
    * @param router {Router} Used to navigate from one path to another
    * @param authService {AuthService} Used to perform HTTP calls for validating user credentials
-   * @param utilService {UtilService} Used to envoke common/shared functions
+   * @param utilService {CommonUtilService} Used to envoke common/shared functions
    */
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    private utilService: UtilService
+    private utilService: CommonUtilService
   ) {}
 
   /**

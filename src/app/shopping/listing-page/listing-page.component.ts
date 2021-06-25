@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 
 import { HttpService } from 'src/app/core/services/http/http.service';
-import { UtilService } from 'src/app/core/services/util/util.service';
+import { CommonUtilService } from 'src/app/core/services/common-util/common-util.service';
 import { Product } from '../model/product';
 
 @Component({
@@ -32,11 +32,11 @@ export class ListingPageComponent implements OnInit {
    * Dependencies are injected the constructor
    *
    * @param httpService {HttpService} Used to perform HTTP calls for fetching data from local server
-   * @param utilService {UtilService} Used to envoke common/shared functions
+   * @param utilService {CommonUtilService} Used to envoke common/shared functions
    */
   constructor(
     private httpService: HttpService,
-    private utilService: UtilService
+    private utilService: CommonUtilService
   ) {}
 
   /**

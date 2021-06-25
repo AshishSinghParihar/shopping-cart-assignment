@@ -11,12 +11,24 @@ import { Product } from 'src/app/shopping/model/product';
 @Injectable({
   providedIn: 'root',
 })
-export class UtilService {
-  productCart = new Cart();
-  allProducts: Product[] = [];
+export class CommonUtilService {
   selectedCategoryEmitter = new BehaviorSubject<string>('');
+  private _productCart = new Cart();
+  private _allProducts: Product[] = [];
 
   constructor(private router: Router, private _snackBar: MatSnackBar) {}
+
+  get allProducts(): Product[] {
+    return this._allProducts;
+  }
+
+  set allProducts(products: Product[]) {
+    this._allProducts = products;
+  }
+
+  get productCart(): Cart {
+    return this._productCart;
+  }
 
   isApplicationOnline() {
     return merge<boolean>(

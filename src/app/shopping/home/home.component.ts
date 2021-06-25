@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 
 import { HttpService } from 'src/app/core/services/http/http.service';
-import { UtilService } from 'src/app/core/services/util/util.service';
+import { CommonUtilService } from 'src/app/core/services/common-util/common-util.service';
 
 @Component({
   selector: 'app-products-home',
@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private httpService: HttpService,
-    private utilService: UtilService
+    private utilService: CommonUtilService
   ) {}
 
   ngOnInit(): void {

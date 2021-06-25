@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { HttpService } from './core/services/http/http.service';
-import { UtilService } from './core/services/util/util.service';
+import { CommonUtilService } from './core/services/common-util/common-util.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private httpService: HttpService,
-    private utilService: UtilService
+    private utilService: CommonUtilService
   ) {}
 
   ngOnInit() {
