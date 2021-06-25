@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-import { Product } from 'src/app/modules/shopping/model/product';
+import { Product } from 'src/app/shopping/model/product';
 
 const BASE_URL = 'http://localhost:5000';
 

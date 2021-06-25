@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { User } from '../../modules/authentication/model/user';
+import { User } from '../../authentication/model/user';
 
 const FIREBASE_AUTH_API = 'https://identitytoolkit.googleapis.com/v1/';
 

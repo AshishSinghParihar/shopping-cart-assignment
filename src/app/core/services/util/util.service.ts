@@ -5,8 +5,8 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, fromEvent, merge, Observable, Observer } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Cart } from 'src/app/modules/shopping/model/cart';
-import { Product } from 'src/app/modules/shopping/model/product';
+import { Cart } from 'src/app/shopping/model/cart';
+import { Product } from 'src/app/shopping/model/product';
 
 @Injectable({
   providedIn: 'root',

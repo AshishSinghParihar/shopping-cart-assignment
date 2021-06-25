@@ -30,14 +30,14 @@ const routes: Routes = [
   {
     path: 'products',
     loadChildren: () =>
-      import('./modules/shopping/shopping.module').then(
+      import('./shopping/shopping.module').then(
         (m) => m.ShoppingModule
       ),
   },
   {
     path: 'authentication',
     loadChildren: () =>
-      import('./core/modules/authentication/authentication.module').then(
+      import('./core/authentication/authentication.module').then(
         (m) => m.AuthenticationModule
       ),
   },
