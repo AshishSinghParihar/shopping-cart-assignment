@@ -4,21 +4,21 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { ProductsCartComponent } from './products-cart.component';
+import { CartComponent } from './cart.component';
 
-describe('ProductsCartComponent', () => {
-  let component: ProductsCartComponent;
-  let fixture: ComponentFixture<ProductsCartComponent>;
+describe('CartComponent', () => {
+  let component: CartComponent;
+  let fixture: ComponentFixture<CartComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProductsCartComponent],
+      declarations: [CartComponent],
       imports: [HttpClientModule, RouterTestingModule, MatSnackBarModule],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductsCartComponent);
+    fixture = TestBed.createComponent(CartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

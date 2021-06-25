@@ -8,23 +8,23 @@ import { UtilService } from 'src/app/core/services/util/util.service';
 
 @Component({
   selector: 'app-products-cart',
-  templateUrl: './products-cart.component.html',
-  styleUrls: ['./products-cart.component.scss'],
+  templateUrl: './cart.component.html',
+  styleUrls: ['./cart.component.scss'],
 })
-export class ProductsCartComponent implements OnInit {
+export class CartComponent implements OnInit {
   /**
    * Dependencies are injected the constructor
    *
    * @param router {Router} Used to navigate from one path to another
    * @param utilService {UtilService} Used to envoke common/shared functions
-   * @param dialogRef {MatDialogRef} Stores the reference of `ProductsCartComponent`
+   * @param dialogRef {MatDialogRef} Stores the reference of `CartComponent`
    * which is available as a dialog box
    * @param data {MAT_DIALOG_DATA} Stores the data being passed from the parent component to the dialog box
    */
   constructor(
     private router: Router,
     public utilService: UtilService,
-    @Optional() private dialogRef: MatDialogRef<ProductsCartComponent>,
+    @Optional() private dialogRef: MatDialogRef<CartComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: { isBigScreen: boolean }
   ) {}
 
@@ -63,7 +63,7 @@ export class ProductsCartComponent implements OnInit {
   }
 
   /**
-   * This method closes the ProductsCartComponent dialog box.
+   * This method closes the CartComponent dialog box.
    */
   closeDialog() {
     this.dialogRef.close();

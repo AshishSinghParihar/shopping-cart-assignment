@@ -6,15 +6,15 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { ProductsHomeComponent } from './products-home.component';
+import { HomeComponent } from './home.component';
 
-describe('ProductsHomeComponent', () => {
-  let component: ProductsHomeComponent;
-  let fixture: ComponentFixture<ProductsHomeComponent>;
+describe('HomeComponent', () => {
+  let component: HomeComponent;
+  let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProductsHomeComponent],
+      declarations: [HomeComponent],
       imports: [
         BrowserAnimationsModule,
         RouterTestingModule,
@@ -26,7 +26,7 @@ describe('ProductsHomeComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductsHomeComponent);
+    fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

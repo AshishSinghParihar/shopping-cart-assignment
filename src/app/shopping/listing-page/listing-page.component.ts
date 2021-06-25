@@ -8,10 +8,10 @@ import { Product } from '../model/product';
 
 @Component({
   selector: 'app-products-listing-page',
-  templateUrl: './products-listing-page.component.html',
-  styleUrls: ['./products-listing-page.component.scss'],
+  templateUrl: './listing-page.component.html',
+  styleUrls: ['./listing-page.component.scss'],
 })
-export class ProductsListingPageComponent implements OnInit {
+export class ListingPageComponent implements OnInit {
   /**
    * Variable to store all the categoris of the products fetched from the server
    */
@@ -40,7 +40,7 @@ export class ProductsListingPageComponent implements OnInit {
   ) {}
 
   /**
-   * In this method, we subscribe to BehaviourSubject being emitted from ProductsHomeComponent to identify the
+   * In this method, we subscribe to BehaviourSubject being emitted from HomeComponent to identify the
    * selected category and set the `selectedCategory` variable
    */
   ngOnInit(): void {

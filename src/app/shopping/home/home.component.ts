@@ -8,10 +8,10 @@ import { UtilService } from 'src/app/core/services/util/util.service';
 
 @Component({
   selector: 'app-products-home',
-  templateUrl: './products-home.component.html',
-  styleUrls: ['./products-home.component.scss'],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
 })
-export class ProductsHomeComponent implements OnInit {
+export class HomeComponent implements OnInit {
   carouselData: any[] = [{}];
   productCategories: any[] = [{}];
   slideInterval = 3000;

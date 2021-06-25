@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { UtilService } from 'src/app/core/services/util/util.service';
-import { ProductsCartComponent } from '../products-cart/products-cart.component';
+import { CartComponent } from '../cart/cart.component';
 
 @Component({
   selector: 'app-header',
@@ -60,7 +60,7 @@ export class HeaderComponent implements OnInit {
   }
 
   /**
-   * This method opens a `MatDialog` containing the `ProductsCartComponent`.
+   * This method opens a `MatDialog` containing the `CartComponent`.
    */
   openCartDialog() {
     const dialogConfig = new MatDialogConfig();
@@ -73,7 +73,7 @@ export class HeaderComponent implements OnInit {
       isBigScreen: true,
     };
 
-    this.dialog.open(ProductsCartComponent, dialogConfig);
+    this.dialog.open(CartComponent, dialogConfig);
   }
 
   /**

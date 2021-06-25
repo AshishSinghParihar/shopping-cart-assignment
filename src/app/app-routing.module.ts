@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorComponent } from './core/components/error/error.component';
 
-import { ProductsCartComponent } from './core/components/products-cart/products-cart.component';
+import { CartComponent } from './core/components/cart/cart.component';
 
 /**
  * The feature modules - ShoppingModule and AuthenticationModule are lazily loaded- using below routes.
@@ -11,7 +11,7 @@ import { ProductsCartComponent } from './core/components/products-cart/products-
  *
  * '/authentication' loads the AuthenticationModule
  *
- * '/cart' loads the ProductsCartComponent which is a part of AppModule.
+ * '/cart' loads the CartComponent which is a part of AppModule.
  */
 const routes: Routes = [
   {
@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'cart',
-    component: ProductsCartComponent,
+    component: CartComponent,
   },
   {
     path: 'error',

@@ -3,22 +3,22 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { ProductsListingPageComponent } from './products-listing-page.component';
+import { ListingPageComponent } from './listing-page.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
-describe('ProductsListingPageComponent', () => {
-  let component: ProductsListingPageComponent;
-  let fixture: ComponentFixture<ProductsListingPageComponent>;
+describe('ListingPageComponent', () => {
+  let component: ListingPageComponent;
+  let fixture: ComponentFixture<ListingPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProductsListingPageComponent],
+      declarations: [ListingPageComponent],
       imports: [HttpClientModule, RouterTestingModule, MatSnackBarModule],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductsListingPageComponent);
+    fixture = TestBed.createComponent(ListingPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

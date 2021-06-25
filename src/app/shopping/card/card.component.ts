@@ -4,10 +4,10 @@ import { Product } from '../model/product';
 
 @Component({
   selector: 'app-product-card',
-  templateUrl: './product-card.component.html',
-  styleUrls: ['./product-card.component.scss'],
+  templateUrl: './card.component.html',
+  styleUrls: ['./card.component.scss'],
 })
-export class ProductCardComponent implements OnInit {
+export class CardComponent implements OnInit {
   @Input() productDetail: any;
 
   @Output() addToCartEmitter = new EventEmitter<Product>();
