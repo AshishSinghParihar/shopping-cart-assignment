@@ -20,8 +20,8 @@ describe('LoginComponent', () => {
         ReactiveFormsModule,
         RouterTestingModule,
         HttpClientModule,
-        MatSnackBarModule,
-      ],
+        MatSnackBarModule
+      ]
     }).compileComponents();
   });
 

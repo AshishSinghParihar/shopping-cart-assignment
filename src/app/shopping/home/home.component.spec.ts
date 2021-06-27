@@ -21,7 +21,7 @@ describe('HomeComponent', () => {
         HttpClientModule,
         MatSnackBarModule,
         NgbModule
-      ],
+      ]
     }).compileComponents();
   });
 

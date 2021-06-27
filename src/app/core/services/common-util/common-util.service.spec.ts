@@ -10,7 +10,7 @@ describe('CommonUtilService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, MatSnackBarModule],
+      imports: [RouterTestingModule, MatSnackBarModule]
     });
     service = TestBed.inject(CommonUtilService);
   });

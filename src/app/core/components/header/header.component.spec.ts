@@ -13,7 +13,7 @@ describe('HeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HeaderComponent],
-      imports: [RouterTestingModule, MatDialogModule, MatSnackBarModule],
+      imports: [RouterTestingModule, MatDialogModule, MatSnackBarModule]
     }).compileComponents();
   });
 

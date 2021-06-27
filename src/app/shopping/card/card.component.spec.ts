@@ -14,12 +14,12 @@ describe('CardComponent', () => {
     stock: 50,
     category: '5b6899953d1a866534f516e2',
     sku: 'fnw-apple-4',
-    id: '5b6c6aeb01a7c38429530884',
+    id: '5b6c6aeb01a7c38429530884'
   };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CardComponent],
+      declarations: [CardComponent]
     }).compileComponents();
   });
 

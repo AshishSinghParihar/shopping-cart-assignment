@@ -13,7 +13,7 @@ describe('ListingPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ListingPageComponent],
-      imports: [HttpClientModule, RouterTestingModule, MatSnackBarModule],
+      imports: [HttpClientModule, RouterTestingModule, MatSnackBarModule]
     }).compileComponents();
   });
 
