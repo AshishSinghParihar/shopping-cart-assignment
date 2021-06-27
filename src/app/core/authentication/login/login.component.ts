@@ -9,7 +9,7 @@ import { CommonUtilService } from 'src/app/core/services/common-util/common-util
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   /**
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * Dependencies are injected the constructor
-   * 
+   *
    * @param formBuilder {FormBuilder} Used to initialize login form
    * @param router {Router} Used to navigate from one path to another
    * @param authService {AuthService} Used to perform HTTP calls for validating user credentials
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   * Login form, 'loginForm' is initialized here with two FormControls
+   * Login form, `loginForm` is initialized here with two FormControls
    *
    * 1. Email: required
    * 2. Password: required
@@ -66,19 +66,18 @@ export class LoginComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(6),
-          Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
-        ],
-      ],
+          Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')
+        ]
+      ]
     });
   }
 
   /**
-   *
-   * @param {string} formControlName Name of the form control
-   * @returns {string} Error message for any form control
-   *
    * This method returns the error message to be displayed in UI when a form control
    * is invalid.
+   *
+   * @param {string} formControlName Name of the form control
+   * @returns {string}
    */
   getErrorMessage(formControlName: string) {
     const formControl = this.loginForm.get(formControlName);
@@ -107,7 +106,7 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   * This method is called when 'Login' button is clicked in UI.
+   * This method is called when `Login` button is clicked in UI.
    *
    * It checks if the loginForm's validity.
    * If the form is valid login API is accessed from AuthService.

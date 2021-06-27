@@ -10,7 +10,7 @@ import { Product } from 'src/app/core/model/product';
 const BASE_URL = 'http://localhost:5000';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class HttpService {
   constructor(private http: HttpClient) {}

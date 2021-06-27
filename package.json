@@ -6,7 +6,7 @@
   "scripts": {
     "test": "ng test",
     "start": "canned -p 5000 ./src/assets/server",
-    "compodoc": "./node_modules/.bin/compodoc -p ./tsconfig.app.json"
+    "compodoc": "./node_modules/.bin/compodoc -p ./tsconfig.json"
   },
   "author": "",
   "license": "MIT",

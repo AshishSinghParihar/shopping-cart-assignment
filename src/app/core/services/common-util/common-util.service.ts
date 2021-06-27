@@ -10,7 +10,7 @@ import { Product } from 'src/app/core/model/product';
 import { Category } from '../../model/category';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CommonUtilService {
   selectedCategoryEmitter = new BehaviorSubject<string>('');
@@ -67,7 +67,7 @@ export class CommonUtilService {
     } else {
       this.openSnackBar('Product out of stock', 'Okay', {
         verticalPosition: 'top',
-        panelClass: ['error-snackbar'],
+        panelClass: ['error-snackbar']
       });
       return false;
     }

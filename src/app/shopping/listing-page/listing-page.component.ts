@@ -10,7 +10,7 @@ import { Category } from 'src/app/core/model/category';
 @Component({
   selector: 'app-products-listing-page',
   templateUrl: './listing-page.component.html',
-  styleUrls: ['./listing-page.component.scss'],
+  styleUrls: ['./listing-page.component.scss']
 })
 export class ListingPageComponent implements OnInit {
   /**
@@ -126,7 +126,7 @@ export class ListingPageComponent implements OnInit {
   addToCart(productDetails: Product) {
     if (this.utilService.isInStock(productDetails.id)) {
       let payload = {
-        productId: productDetails.id,
+        productId: productDetails.id
       };
       // this.httpService.addToCart(payload).subscribe((resp: any) => {
       //   console.log('addedToCart');

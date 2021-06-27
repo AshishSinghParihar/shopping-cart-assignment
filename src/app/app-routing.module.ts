@@ -17,11 +17,11 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: '/products',
-    pathMatch: 'full',
+    pathMatch: 'full'
   },
   {
     path: 'cart',
-    component: CartComponent,
+    component: CartComponent
   },
   {
     path: 'error',
@@ -30,21 +30,19 @@ const routes: Routes = [
   {
     path: 'products',
     loadChildren: () =>
-      import('./shopping/shopping.module').then(
-        (m) => m.ShoppingModule
-      ),
+      import('./shopping/shopping.module').then((m) => m.ShoppingModule)
   },
   {
     path: 'authentication',
     loadChildren: () =>
       import('./core/authentication/authentication.module').then(
         (m) => m.AuthenticationModule
-      ),
-  },
+      )
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

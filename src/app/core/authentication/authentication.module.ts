@@ -17,8 +17,8 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule,
-  ],
+    MatInputModule
+  ]
 })
 
 /**

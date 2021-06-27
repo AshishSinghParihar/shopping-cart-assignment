@@ -9,7 +9,7 @@ import { CartComponent } from '../cart/cart.component';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
   /**
@@ -70,7 +70,7 @@ export class HeaderComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.width = '40%';
     dialogConfig.data = {
-      isBigScreen: true,
+      isBigScreen: true
     };
 
     this.dialog.open(CartComponent, dialogConfig);

@@ -9,11 +9,7 @@ import { ProductsRoutingModule } from './shopping-routing.module';
 import { CardComponent } from './card/card.component';
 
 @NgModule({
-  declarations: [
-    ListingPageComponent,
-    HomeComponent,
-    CardComponent,
-  ],
-  imports: [CommonModule, ProductsRoutingModule, NgbModule],
+  declarations: [ListingPageComponent, HomeComponent, CardComponent],
+  imports: [CommonModule, ProductsRoutingModule, NgbModule]
 })
 export class ShoppingModule {}

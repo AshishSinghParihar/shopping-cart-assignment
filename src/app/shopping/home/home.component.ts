@@ -11,7 +11,7 @@ import { Category } from 'src/app/core/model/category';
 @Component({
   selector: 'app-products-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   carouselData: Banner[] = [];

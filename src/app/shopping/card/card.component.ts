@@ -5,7 +5,7 @@ import { Product } from '../../core/model/product';
 @Component({
   selector: 'app-product-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss'],
+  styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
   @Input() productDetail: Product;

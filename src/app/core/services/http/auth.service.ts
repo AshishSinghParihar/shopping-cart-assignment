@@ -10,7 +10,7 @@ import { User } from '../../model/user';
 const FIREBASE_AUTH_API = 'https://identitytoolkit.googleapis.com/v1/';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthService {
   private _authErrorCodes: { [key: string]: string } = {
@@ -24,7 +24,7 @@ export class AuthService {
       'The password is invalid or the user does not have a password.',
     USER_DISABLED: 'The user account has been disabled by an administrator.',
     TOKEN_EXPIRED:
-      "The user's credential is no longer valid. The user must sign in again.",
+      "The user's credential is no longer valid. The user must sign in again."
   };
 
   constructor(private http: HttpClient) {}
@@ -47,7 +47,7 @@ export class AuthService {
         {
           email,
           password,
-          returnSecureToken: true,
+          returnSecureToken: true
         }
       )
       .pipe(catchError(this.handleError.bind(this)));

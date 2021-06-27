@@ -9,7 +9,7 @@ import { CommonUtilService } from 'src/app/core/services/common-util/common-util
 @Component({
   selector: 'app-products-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss'],
+  styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
   /**

@@ -7,7 +7,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {
   MatDialogModule,
   MatDialogRef,
-  MAT_DIALOG_DATA,
+  MAT_DIALOG_DATA
 } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -26,15 +26,15 @@ import { ErrorComponent } from './core/components/error/error.component';
     AppRoutingModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatIconModule,
+    MatIconModule
   ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} },
-    { provide: MatDialogRef, useValue: {} },
+    { provide: MatDialogRef, useValue: {} }
   ],
   bootstrap: [AppComponent],
   exports: [MatSnackBarModule],
-  entryComponents: [CartComponent],
+  entryComponents: [CartComponent]
 })
 
 /**

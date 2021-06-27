@@ -7,16 +7,16 @@ import { ListingPageComponent } from './listing-page/listing-page.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: HomeComponent
   },
   {
     path: 'plp',
-    component: ListingPageComponent,
-  },
+    component: ListingPageComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class ProductsRoutingModule {}

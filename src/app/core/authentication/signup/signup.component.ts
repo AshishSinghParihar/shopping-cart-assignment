@@ -10,7 +10,7 @@ import { User } from '../../model/user';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss'],
+  styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
   /**
@@ -30,7 +30,7 @@ export class SignupComponent implements OnInit {
 
   /**
    * Dependencies are injected the constructor
-   * 
+   *
    * @param formBuilder {FormBuilder} Used to initialize login form
    * @param router {Router} Used to navigate from one path to another
    * @param authService {AuthService} Used to perform HTTP calls for storing user credentials
@@ -54,7 +54,7 @@ export class SignupComponent implements OnInit {
   }
 
   /**
-   * Signup form, 'signupForm' is initialized here with five FormControls
+   * Signup form, `signupForm` is initialized here with five FormControls
    *
    * 1. First name: required
    * 2. Last name: required
@@ -73,24 +73,23 @@ export class SignupComponent implements OnInit {
           [
             Validators.required,
             Validators.minLength(6),
-            Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
-          ],
+            Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')
+          ]
         ],
-        cnfPassword: [null, [Validators.required]],
+        cnfPassword: [null, [Validators.required]]
       },
       {
-        validator: this.cnfPasswordValidator(),
+        validator: this.cnfPasswordValidator()
       }
     );
   }
 
   /**
+   * This method returns the error message to be displayed in UI when a form control
+   * is invalid.
    *
    * @param {string} formControlName Name of the form control
    * @returns {string} Error message for any form control
-   *
-   * This method returns the error message to be displayed in UI when a form control
-   * is invalid.
    */
   getErrorMessage(formControlName: string) {
     const formControl = this.signupForm.get(formControlName);
@@ -139,9 +138,9 @@ export class SignupComponent implements OnInit {
   }
 
   /**
-   * This method is envoked when 'Signup' button is clicked in UI.
+   * This method is envoked when `Signup` button is clicked in UI.
    *
-   * It validates 'signupForm'. If valid, the form values are sent to signup API through AuthService.
+   * It validates `signupForm`. If valid, the form values are sent to signup API through AuthService.
    * If the process is successful, the 'signupForm' is reset and user is redirected to Login Page.
    * Otherwise, relevant error message is displayed in UI.
    */
@@ -179,8 +178,7 @@ export class SignupComponent implements OnInit {
   }
 
   /**
-   *
-   * @returns error object if values of 'password' and 'cnfPassword' do not match else null.
+   * @returns Error object if values of `password` and `cnfPassword` do not match else null.
    */
   cnfPasswordValidator() {
     return (formGroup: FormGroup) => {
