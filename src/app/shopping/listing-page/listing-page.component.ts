@@ -7,6 +7,11 @@ import { CommonUtilService } from 'src/app/core/services/common-util/common-util
 import { Product } from '../../core/model/product';
 import { Category } from 'src/app/core/model/category';
 
+/**
+ * This component is responsible for displaying the list of all the product.
+ * It also has list of categories as a menu. A user can filter products by selecting any particular
+ * category.
+ */
 @Component({
   selector: 'app-products-listing-page',
   templateUrl: './listing-page.component.html',
@@ -58,6 +63,10 @@ export class ListingPageComponent implements OnInit {
     }
   }
 
+  /**
+   * In this method, list of categories is fetched from the server and the response is assigned
+   * to `productCategories` variable.
+   */
   getProductCategories() {
     this.httpService
       .getProductCategories()
@@ -79,6 +88,15 @@ export class ListingPageComponent implements OnInit {
       );
   }
 
+  /**
+   * In this method, list of all the products is fetched from the server and the response
+   * is assigned to `_allProducts` variable in {CommonUtilService} by calling the getter
+   * function `allProducts`.
+   *
+   * Thereafter, the products are filetered based on the selected category if any
+   * (`Explore` button clicked on {HomeComponent}), otherwise,
+   * all the products are displayed by default without any filtering.
+   */
   getAllProducts() {
     this.httpService
       .getAllProducts()
@@ -99,6 +117,12 @@ export class ListingPageComponent implements OnInit {
       );
   }
 
+  /**
+   * This method is called when category is clicked from the category list menu on Product Listing page.
+   * The category id is passed as a parameter to this method which is used for filtering.
+   *
+   * @param category {string} ID of the selected category based on which products need to be filtered.
+   */
   selectCategory(category: string) {
     if (this.selectedCategory === category || category === 'all') {
       this.selectedCategory = '';
@@ -108,6 +132,16 @@ export class ListingPageComponent implements OnInit {
     this.filterProducts(this.selectedCategory);
   }
 
+  /**
+   * This method contains the logic to assign filtered product to `filteredProductsList` variable
+   * based on the value of `categoryId` being passed.
+   *
+   * If the passed `categoryId` is empty string, products are not filtered and all the list of
+   * available products from `CommonUtilService` is assigned to `filteredProductsList`. Otherwise,
+   * products with given categoryId are filtered and assigned.
+   *
+   * @param category {string} ID of the selected category based on which products need to be filtered.
+   */
   filterProducts(category: string) {
     if (category === '') {
       this.filteredProductList = Object.assign(this.utilService.allProducts);
@@ -118,11 +152,24 @@ export class ListingPageComponent implements OnInit {
     }
   }
 
+  /**
+   * This method is called when the value in category list dropdown is changed.
+   *
+   * @param eventTarget Event triggered when dropdown value is changed
+   */
   onDropdownChange(eventTarget: any) {
     this.selectedCategory = '';
     this.selectCategory(eventTarget.value);
   }
 
+  /**
+   * This method is called when `Buy Now` button for any particular product is clicked.
+   *
+   * It checks if the product is available in stock. If it is available, `addToCart` API
+   * is called and item is added into the cart and success message is shown.
+   *
+   * @param productDetails {Product} Object of a product containing all the details of the product
+   */
   addToCart(productDetails: Product) {
     if (this.utilService.isInStock(productDetails.id)) {
       let payload = {
