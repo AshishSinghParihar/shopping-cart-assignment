@@ -19,7 +19,7 @@ import { Category } from 'src/app/core/model/category';
 })
 export class HomeComponent implements OnInit {
   /**
-   * This is an array containing the list of {Banner} objects fetched from server.
+   * This is an array containing the list of Banner objects fetched from server.
    * The data is used to display the carousel.
    */
   carouselData: Banner[] = [];

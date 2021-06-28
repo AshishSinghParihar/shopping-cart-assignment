@@ -90,11 +90,11 @@ export class ListingPageComponent implements OnInit {
 
   /**
    * In this method, list of all the products is fetched from the server and the response
-   * is assigned to `_allProducts` variable in {CommonUtilService} by calling the getter
+   * is assigned to `_allProducts` variable in CommonUtilService by calling the getter
    * function `allProducts`.
    *
    * Thereafter, the products are filetered based on the selected category if any
-   * (`Explore` button clicked on {HomeComponent}), otherwise,
+   * (`Explore` button clicked on HomeComponent), otherwise,
    * all the products are displayed by default without any filtering.
    */
   getAllProducts() {
