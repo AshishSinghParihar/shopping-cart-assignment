@@ -6,6 +6,12 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { CommonUtilService } from 'src/app/core/services/common-util/common-util.service';
 
+/**
+ * CartComponent is where the products added to cart by user are available.
+ * User can add more products or remove from the products colleactoin in the cart.
+ *
+ * The component shows total number of items in cart and their indivudual as well as total price.
+ */
 @Component({
   selector: 'app-products-cart',
   templateUrl: './cart.component.html',
@@ -13,7 +19,7 @@ import { CommonUtilService } from 'src/app/core/services/common-util/common-util
 })
 export class CartComponent implements OnInit {
   /**
-   * Dependencies are injected the constructor
+   * Dependencies are injected in the constructor
    *
    * @param router {Router} Used to navigate from one path to another
    * @param utilService {CommonUtilService} Used to envoke common/shared functions
@@ -28,6 +34,9 @@ export class CartComponent implements OnInit {
     @Optional() @Inject(MAT_DIALOG_DATA) public data: { isBigScreen: boolean }
   ) {}
 
+  /**
+   * @ignore
+   */
   ngOnInit(): void {}
 
   /**

@@ -6,6 +6,9 @@ import { take } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/services/http/auth.service';
 import { CommonUtilService } from 'src/app/core/services/common-util/common-util.service';
 
+/**
+ * LoginComponent allows a user to login to the Shopping application by entering the correct credentials.
+ */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,7 +31,7 @@ export class LoginComponent implements OnInit {
   onlineOffline: boolean;
 
   /**
-   * Dependencies are injected the constructor
+   * Dependencies are injected in the constructor
    *
    * @param formBuilder {FormBuilder} Used to initialize login form
    * @param router {Router} Used to navigate from one path to another

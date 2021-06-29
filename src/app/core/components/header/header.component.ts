@@ -6,6 +6,12 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CommonUtilService } from 'src/app/core/services/common-util/common-util.service';
 import { CartComponent } from '../cart/cart.component';
 
+/**
+ * `HeaderComponent` forms the header part of the application. It includes the main navigation links for Home page,
+ * Product Listing page, Login page, Register page and Cart page.
+ * 
+ * @implements OnInit
+ */
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -22,13 +28,12 @@ export class HeaderComponent implements OnInit {
    * and stores the value of scren size in `screenWidth` variable.
    * @param event
    */
-  @HostListener('window:resize', ['$event'])
-  getScreenSize(event?: any) {
+  @HostListener('window:resize', ['$event']) getScreenSize(event?: any) {
     this.screenWidth = window.innerWidth;
   }
 
   /**
-   * Dependencies are injected the constructor.
+   * Dependencies are injected in the constructor.
    *
    * @param router
    * @param dialog

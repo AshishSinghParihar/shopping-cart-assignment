@@ -5,6 +5,11 @@ import { Subscription } from 'rxjs';
 import { HttpService } from '../../services/http/http.service';
 import { Banner } from '../../model/banner';
 
+/**
+ * `ErrorComponent` is responsible for showing an appropriate message whenever the local server is not available.
+ * 
+ * @implements OnInit, OnDestroy, DoCheck
+ */
 @Component({
   selector: 'app-error',
   templateUrl: './error.component.html',
@@ -17,13 +22,16 @@ export class ErrorComponent implements OnInit, OnDestroy, DoCheck {
   categoriesSub: Subscription;
 
   /**
-   * Dependencies are injected the constructor
+   * Dependencies are injected in the constructor
    *
    * @param router {Router} Used to navigate from one path to another
    * @param httpService {HttpService} Used to perform HTTP calls for fetching data from local server
    */
   constructor(private router: Router, private httpService: HttpService) {}
 
+  /**
+   * @ignore
+   */
   ngOnInit() {}
 
   /**

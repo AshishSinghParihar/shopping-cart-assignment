@@ -24,8 +24,14 @@ export class CardComponent implements OnInit {
    */
   @Output() addToCartEmitter = new EventEmitter<Product>();
 
+  /**
+   * @ignore
+   */
   constructor() {}
 
+  /**
+   * @ignore
+   */
   ngOnInit(): void {}
 
   /**

@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   slideInterval = 3000;
 
   /**
-   * Dependencies are injected the constructor
+   * Dependencies are injected in the constructor
    *
    * @param router {Router} Used to navigate from one path to another
    * @param httpService {HttpService} Used to perform HTTP calls for fetching data from local server

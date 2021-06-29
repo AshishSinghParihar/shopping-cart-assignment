@@ -35,7 +35,7 @@ export class ListingPageComponent implements OnInit {
   selectedCategory = '';
 
   /**
-   * Dependencies are injected the constructor
+   * Dependencies are injected in the constructor
    *
    * @param httpService {HttpService} Used to perform HTTP calls for fetching data from local server
    * @param utilService {CommonUtilService} Used to envoke common/shared functions

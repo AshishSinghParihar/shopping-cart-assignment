@@ -7,11 +7,19 @@ import { AuthService } from 'src/app/core/services/http/auth.service';
 import { CommonUtilService } from 'src/app/core/services/common-util/common-util.service';
 import { User } from '../../model/user';
 
+/**
+ * The SignupComponent is responsible for registering a user into the database.
+ * Currently, we are using Firebase API for storing the records.
+ */
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
+
+/**
+ * @implements OnInit
+ */
 export class SignupComponent implements OnInit {
   /**
    * FormGroup to store FormControls for signup form
@@ -29,7 +37,7 @@ export class SignupComponent implements OnInit {
   onlineOffline: boolean;
 
   /**
-   * Dependencies are injected the constructor
+   * Dependencies are injected in the constructor
    *
    * @param formBuilder {FormBuilder} Used to initialize login form
    * @param router {Router} Used to navigate from one path to another
@@ -178,6 +186,9 @@ export class SignupComponent implements OnInit {
   }
 
   /**
+   * This is a custom validator to validate if the entered password matches with the password in
+   * Confirm password field.
+   * 
    * @returns Error object if values of `password` and `cnfPassword` do not match else null.
    */
   cnfPasswordValidator() {
